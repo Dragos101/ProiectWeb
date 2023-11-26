@@ -9,6 +9,8 @@ Web system capable to generate in real-time <a href="https://wiki.openstreetmap.
 
 # Project progress
 
+<a href="https://app.swaggerhub.com/apis/DragosBaciu/MIR-Template/1.0.0#/Migrations/get_migration__userId_">Open API Specification</a>
+
 <ul>
 <li>We will update it with the solved tasks for the current deadline</li>
 </ul>
