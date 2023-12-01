@@ -15,7 +15,7 @@ Web system capable to generate in real-time <a href="https://wiki.openstreetmap.
   <li>
     <a href="https://github.com/Dragos101/ProiectWeb/tree/main/Documentation/Diagrams">Use-Case, Context and Components C4 Diagrams</a>
   </li>
-</ul>
-<ul>
-<li>We will update it with the solved tasks for the current deadline</li>
+  <li>
+    <a href="https://htmlpreview.github.io/?https://github.com/Dragos101/ProiectWeb/blob/main/Documentation/Scholarly/index.html">Scholarly HTML</a>
+  </li>
 </ul>
