@@ -23,7 +23,7 @@
   <span> · </span>
     <a href="https://github.com/Dragos101/ProiectWeb/tree/main/Documentation/Diagrams">Use-Case, Context and Components C4 Diagrams</a>
   <span> · </span>
-    <a href="https://htmlpreview.github.io/?https://github.com/Dragos101/ProiectWeb/blob/main/Documentation/Scholarly/index.html">Scholarly HTML</a>
+    <a href="https://htmlpreview.github.io/?https://github.com/Dragos101/ProiectWeb/blob/main/Documentation/Scholarly/index.html">Scholarly HTML Demo</a>
   <span> · </span>
     <a href="https://github.com/Dragos101/ProiectWeb/blob/main/README.md">README as public wiki</a>
   </h4>
@@ -50,12 +50,10 @@ Web system capable to generate in real-time <a href="https://wiki.openstreetmap.
 
 ## :card_index_dividers: Project Progress
 
-<ul>
-  <li>Open API Specification - Dragos Baciu</li>
-  <li>Diagrams - Lupu Cezar (50%) + Baciu Dragos(50%)</li>
-  <li>Scholarly HTML - Lupu Cezar (75%) + Baciu Dragos(25%)</li>
-  <li>README as public wiki - Lupu Cezar</li>
-</ul>
+  - [Open API Specification](https://app.swaggerhub.com/apis/DragosBaciu/MIR-Template) - Dragos Baciu
+  - [Diagrams](https://github.com/Dragos101/ProiectWeb/tree/main/Documentation/Diagrams) - Lupu Cezar (50%) + Baciu Dragos(50%)
+  - [Scholarly HTML code](https://github.com/Dragos101/ProiectWeb/blob/main/Documentation/Scholarly/index.html) - Lupu Cezar (75%) + Baciu Dragos(25%)
+  - [README as public wiki](https://github.com/Dragos101/ProiectWeb/blob/main/README.md) - Lupu Cezar
 
 ## :handshake: Team
 
