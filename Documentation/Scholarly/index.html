@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ro">
+<html lang="en">
 
 <head>
   <meta charset="utf-8">
@@ -40,7 +40,16 @@
         </a>
         <ol role="directory">
           <li>
-            <a href="#github"><span>5.1 </span>Github</a>
+            <a href="#openapi"><span>5.1 </span>Open API Specifiaction</a>
+          </li>
+          <li>
+            <a href="#diagrams"><span>5.2 </span>Use Case and C4 Diagrams (Context and Container Diagrams)</a>
+          </li>
+          <li>
+            <a href="#scholarly"><span>5.3 </span>Scholarly HTML</a>
+          </li>
+          <li>
+            <a href="#progress"><span>5.4 </span>Project Progress</a>
           </li>
         </ol>
       </li>
@@ -60,21 +69,21 @@
       <dt>Authors</dt>
       <dd>
         <ol>
-          <li property="schema:author" typeof="sa:ContributorRole">
+          <li>
             <a property="schema:author" href="https://github.com/dragos101" typeof="schema:Person">
               <span property="schema:familyName">Baciu</span>
               <span property="schema:givenName">Dragos</span>
             </a>
-            <sup property="sa:roleContactPoint" typeof="schema:ContactPoint">
+            <sup property="schema:contactPoint" typeof="schema:contactPoint">
               <a property="schema:email" href="mailto:baciu.dragos17@gmail.com" title="send mail">Contact me! ☺</a>
             </sup>
           </li>
-          <li property="schema:author" typeof="sa:ContributorRole">
+          <li>
             <a property="schema:author" href="https://github.com/cezaruss" typeof="schema:Person">
               <span property="schema:familyName">Lupu</span>
               <span property="schema:givenName">Cezar-Justinian</span>
             </a>
-            <sup property="sa:roleContactPoint" typeof="schema:ContactPoint">
+            <sup property="schema:contactPoint" typeof="schema:contactPoint">
               <a property="schema:email" href="mailto:cezarlupu2012@gmail.com" title="send mail">Contact me! ☺</a>
             </sup>
           </li>
@@ -83,43 +92,86 @@
     </dl>
   </div>
 
-  <section typeof="sa:Abstract" id="abstract" role="doc-abstract">
+  <section typeof="schema:Article" property="schema:Abstract" id="abstract" role="doc-abstract">
     <h2><span>1. </span>Abstract</h2>
     <p>
-      Migration Reporting Tool este un utilitar bazat pe tehnologiile web. Gandit ca o solutie a unor procese ale vizualizarii, editarii și raportării datelor privind migrațiile, Migration Reporting Tool integrează observațiile utilizatorilor și datele provenite de la diverse senzori pentru a genera în timp real o hartă interactivă privind migrațiile efectuate de diferite entități.
+      Migration Reporting Tool is a web-based utility. Designed as a solution for visualizing, editing, and reporting migration data processes, the tool integrates user observations and data from various sensors to generate, in real-time, an interactive map depicting migrations conducted by different entities.
     </p>
   </section>
 
-  <section typeof="sa:Introduction" id="introduction" role="doc-introduction">
+  <section typeof="schema:Article" property="schema: articleSection" id="introduction" role="doc-introduction">
     <h2><span>2. </span>Introduction</h2>
+    <p>
+        Migration Reporting Tool (MIR) is a project proposed at <span typeof="schema:Course" property="schema:url" resource="https://profs.info.uaic.ro/~busaco/teach/courses/wade/"><a role="doc-biblioref" href="https://profs.info.uaic.ro/~busaco/teach/courses/wade/"><span property="schema:name">Web Application Development course</span></a></span>. In order to resolve this task, the REST paradigm will be used. The communication between the server and the clients will be resolved by creating an REST API that will handle the desired comunnication in our web application.The migrations will be shown on an interactive map and they will be handled in different ways by the users, regarding the role of the client.
+    </p>
 
   </section>
 
-  <section typeof="sa:Motivation" id="motivation" role="doc-motivation">
+  <section typeof="schema:Article" property="schema:articleSection" id="motivation" role="doc-motivation">
     <h2><span>3. </span>Motivation</h2>
-    
+    We opt for this project because it is an interisting problem in real life, regarding some situations: firstly, such a tool will be useful to see how Romanians go abroad because of the financial situation. Then, we taught about the migrations that took place because of the wars. Finally, we can see the impact of such an application when we want to track how birds or some species of animals migrates because of the weather/ climate changes.
   </section>
 
-  <section typeof="sa:Functionalities" id="functionalities" role="doc-functionalities">
+  <section typeof="schema:Article" property="schema:articleSection" id="functionalities" role="doc-functionalities">
     <h2><span>4. </span>Functionalities</h2>
     
   </section>
 
-  <section typeof="sa:Collaboration" id="collaboration" role="doc-collaboration">
+  <section typeof="schema:Article" property="schema:articleSection" id="collaboration" role="doc-collaboration">
     <h2><span>5. </span>Work flow</h2>
+    <p>We will collaborate using GitHub (<a href="https://github.com/Dragos101/ProiectWeb">Github</a>). Our collaboration includes:</p>
+    <ul>
+      <li>Creating diagrams collaboratively.</li>
+      <li>Developing the OpenAPI specification by Dragos.</li>
+      <li>Implementing Scholarly HTML by Cezar.</li>
+      <li>Tracking project progress regularly.</li>
+    </ul>
     
-  </section>
+    <section typeof="schema:Article" property="schema:articleSection" id="openapi" role="doc-openapi">
+      <h3><span>5.1 </span>OpenAPI Specification</h3>
+      <p>The OpenAPI specification outlines the REST API design for handling communication within the web application. The specification can be found <a href="https://app.swaggerhub.com/apis/DragosBaciu/MIR-Template/1.0.0">here</a>. </p>
+    </section>
   
-  <section typeof="sa:Conclusion" id="conclusion" role="doc-conclusion">
+    <section typeof="schema:Article" property="schema:articleSection" id="diagrams" role="doc-diagrams">
+      <h3><span>5.2 </span>Use Case and C4 Diagrams</h3>
+      <p>We have created Use Case and C4 diagrams. The C4 diagrams illustrate the context and container levels. The diagrams can be found <a href="https://github.com/Dragos101/ProiectWeb/tree/main/Documentation/Diagrams">here</a>.</p>
+    </section>
+  
+    <section typeof="schema:Article" property="schema:articleSection" id="scholarly" role="doc-scholarly">
+      <h3><span>5.3 </span>Scholarly HTML</h3>
+      <p>The Scholarly HTML structure is developed to ensure a semantic and accessible layout for our scholarly article.</p>
+    </section>
+  
+    <section typeof="schema:Article" property="schema:articleSection" id="progress" role="doc-progress">
+      <h3><span>5.4 </span>Project Progress</h3>
+      <p>We regularly update and maintain the project progress tracking to ensure timely completion of tasks and milestones. The tracking can be found <a href="https://github.com/Dragos101/ProiectWeb/#project-progress">here</a>.</p>
+    </section>
+  </section>
+   
+  <section typeof="schema:Article" property="schema:articleSection" id="conclusion" role="doc-conclusion">
     <h2><span>6. </span>Conclusion</h2>
+    This section will be updated before the final presentation for this project.
     
   </section>
 
-  <section typeof="sa:References" id="references" role="doc-references">
+  <section typeof = "schema:Article" property="schema:articleSection" id="references" role="doc-references">
     <h2><span>7. </span>References</h2>
-    
-  </section>
-  
+    <ol>
+      <li typeof="schema:WebPage" role="doc-biblioentry"
+          resource="https://profs.info.uaic.ro/~busaco/teach/courses/wade/web-film.html"
+          property="schema:citation" id="wade">
+        <cite property="schema:name">
+          <a href="https://profs.info.uaic.ro/~busaco/teach/courses/wade/web-film.html">Web Application Course</a>
+        </cite>                
+      </li>
+      <li typeof="schema:WebPage" role="doc-biblioentry"
+          resource="https://restfulapi.net/"
+          property="schema:citation" id="restful-api-website">
+        <cite property="schema:name">
+          <a href="https://restfulapi.net/">Restful API website</a>
+        </cite> 
+      </li>
+    </ol>   
+  </section>  
 </body>
-
 </html>
