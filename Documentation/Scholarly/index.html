@@ -33,6 +33,17 @@
         <a href="#functionalities">
           <span>4. </span> Functionalities
         </a>
+        <ol role="directory">
+          <li>
+            <a href="#internal-data"><span>4.1 </span>Internal data</a>
+          </li>
+          <li>
+            <a href="#external-data"><span>4.2 </span>External data</a>
+          </li>
+          <li>
+            <a href="#linked-data"><span>4.3 </span>Conforming with linked data principles</a>
+          </li>
+        </ol>
       </li>
       <li>
         <a href="#collaboration">
@@ -40,7 +51,7 @@
         </a>
         <ol role="directory">
           <li>
-            <a href="#openapi"><span>5.1 </span>Open API Specifiaction</a>
+            <a href="#openapi"><span>5.1 </span>Open API Specification</a>
           </li>
           <li>
             <a href="#diagrams"><span>5.2 </span>Use Case and C4 Diagrams (Context and Container Diagrams)</a>
@@ -114,7 +125,44 @@
 
   <section typeof="schema:Article" property="schema:articleSection" id="functionalities" role="doc-functionalities">
     <h2><span>4. </span>Functionalities</h2>
-    
+    <section id="internal-data">
+      <h3><span>4.1 </span>Internal Data</h3>
+      <p>
+          The internal data structures and models chosen for MIR will be designed to efficiently store and manage migration data. In this context, we think about the following models:
+      </p>
+      <ul>
+          <li>Migration Object Model</li>
+          <li>User Role-Based Model</li>
+      </ul>
+      <p>
+        In the context diagram, we want to show this type of hadling. In the below diagram, we show that we will divide the data into two main components: users and migrations (see the databases).
+      </p>
+      <img src="../Diagrams/C1_Diagrama_MIR.png" alt="C4-Context-Diagram-of-MIR" style="width: 100%">
+      <p>
+        In the containers diagram, we focused on the interaction of clients, regarding their status (user or guest), in order to show the desired behaviour for our web application.
+      </p>
+      <img src="../Diagrams/ContainersDiagramMIR.png" alt="C4-Context-Diagram-of-MIR" style="width: 100%">
+    </section>
+    <section id="external-data">
+      <h3>4.2. External Data Sources</h3>
+      <p>
+          MIR will use  external data sources such as:
+      </p>
+      <ul>
+          <li>Migration Data API - that will help us in managing the functionalities</li>
+          <li>Geolocation Services - that will help us in showing the migrations on a map</li>
+      </ul>
+    </section>
+    <section id="linked-data">
+      <h3>4.3 Conforming with linked data principles</h3>
+      <p>
+          The solution implemented in MIR will use linked data principles, ensuring data interoperability and accessibility. For our project, we think at these possible solutions:
+      </p>
+      <ul>
+          <li>Usage of Uniform Resource Identifiers (URIs) for data identification</li>
+          <li>Linking data elements through RDF (Resource Description Framework)</li>
+      </ul>
+    </section>
   </section>
 
   <section typeof="schema:Article" property="schema:articleSection" id="collaboration" role="doc-collaboration">
@@ -139,12 +187,12 @@
   
     <section typeof="schema:Article" property="schema:articleSection" id="scholarly" role="doc-scholarly">
       <h3><span>5.3 </span>Scholarly HTML</h3>
-      <p>The Scholarly HTML structure is developed to ensure a semantic and accessible layout for our scholarly article.</p>
+      <p>The Scholarly HTML structure is developed in order to present the most useful things to present about our project. This article will be updated coresponding with the desired info for each deadline of this project.</p>
     </section>
   
     <section typeof="schema:Article" property="schema:articleSection" id="progress" role="doc-progress">
       <h3><span>5.4 </span>Project Progress</h3>
-      <p>We regularly update and maintain the project progress tracking to ensure timely completion of tasks and milestones. The tracking can be found <a href="https://github.com/Dragos101/ProiectWeb/#project-progress">here</a>.</p>
+      <p>We regularly update and maintain the project progress tracking to ensure timely completion of tasks. The tracking can be found <a href="https://github.com/Dragos101/ProiectWeb/blob/main/README.md#card_index_dividers-project-progress">here</a>.</p>
     </section>
   </section>
    
@@ -171,7 +219,27 @@
           <a href="https://restfulapi.net/">Restful API website</a>
         </cite> 
       </li>
+      <li typeof="schema:WebPage" role="doc-biblioentry"
+          resource="https://www.migrationdataportal.org/international-data?i=stock_abs_&t=2020"
+          property="schema:citation" id="migration-data-portal">
+        <cite property="schema:name">
+          <a href="https://www.migrationdataportal.org/international-data?i=stock_abs_&t=2020">Migration Data Portal</a>
+        </cite>
+      </li>
+      <li typeof="schema:WebPage" role="doc-biblioentry"
+          resource="https://www.un.org/development/desa/pd/data-landing-page"
+          property="schema:citation" id="un-development-data-landing">
+        <cite property="schema:name">
+          <a href="https://www.un.org/development/desa/pd/data-landing-page">UN Development Datasets</a>
+        </cite>
+      </li>
     </ol>   
-  </section>  
+  </section>
+  <br>
+  <footer>
+    <p>
+        For more detailed information about the projects, visit: <a href="https://profs.info.uaic.ro/~busaco/teach/courses/wade/" target="_blank">Web Application Development Course</a>.
+    </p>
+  </footer>  
 </body>
 </html>

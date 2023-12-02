@@ -19,7 +19,7 @@
 </p>
    
 <h4>
-    <a href="https://app.swaggerhub.com/apis/DragosBaciu/MIR-Template/1.0.0#/Migrations/get_migration__userId_">Open API Specification</a
+    <a href="https://app.swaggerhub.com/apis/DragosBaciu/MIR-Template/1.0.0#/Migrations/get_migration__userId_">Open API Specification</a>
   <span> · </span>
     <a href="https://github.com/Dragos101/ProiectWeb/tree/main/Documentation/Diagrams">Use-Case, Context and Components C4 Diagrams</a>
   <span> · </span>
@@ -51,7 +51,7 @@ Web system capable to generate in real-time <a href="https://wiki.openstreetmap.
 ## :card_index_dividers: Project Progress
 
   - [Open API Specification](https://app.swaggerhub.com/apis/DragosBaciu/MIR-Template) - Dragos Baciu
-  - [Diagrams](https://github.com/Dragos101/ProiectWeb/tree/main/Documentation/Diagrams) - Lupu Cezar (50%) + Baciu Dragos(50%)
+  - [Diagrams](https://github.com/Dragos101/ProiectWeb/tree/main/Documentation/Diagrams) - Lupu Cezar (Context and Components Diagrams) (50%) + Baciu Dragos (Use Case Diagrams)(50%)
   - [Scholarly HTML code](https://github.com/Dragos101/ProiectWeb/blob/main/Documentation/Scholarly/index.html) - Lupu Cezar (75%) + Baciu Dragos(25%)
   - [README as public wiki](https://github.com/Dragos101/ProiectWeb/blob/main/README.md) - Lupu Cezar
 
@@ -92,6 +92,7 @@ Visit also:
  - <project><a href="https://profs.info.uaic.ro/~busaco/teach/courses/wade/web-projects.html" title="WADe projects">About WADe project</a></project>
  - <web><a href="https://profs.info.uaic.ro/~busaco/teach/courses/wade/web-film.html" title="Web presentation">Web presentation</a></web>
 
+Tags: project, infoiasi, wade, web
 <!-- Or, maybe, this is a better practice - 
 <ul>
   <li class="wade">
