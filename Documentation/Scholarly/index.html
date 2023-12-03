@@ -128,11 +128,11 @@
     <section id="internal-data">
       <h3><span>4.1 </span>Internal Data</h3>
       <p>
-          The internal data structures and models chosen for MIR will be designed to efficiently store and manage migration data. In this context, we think about the following models:
+        The internal data structures and models chosen for MIR will be designed to efficiently store and manage migration data. In this context, we think about the following models:
       </p>
       <ul>
-          <li>Migration Object Model</li>
-          <li>User Role-Based Model</li>
+        <li>Migration Object Model</li>
+        <li>User Role-Based Model</li>
       </ul>
       <p>
         In the context diagram, we want to show this type of hadling. In the below diagram, we show that we will divide the data into two main components: users and migrations (see the databases).
@@ -142,26 +142,59 @@
         In the containers diagram, we focused on the interaction of clients, regarding their status (user or guest), in order to show the desired behaviour for our web application.
       </p>
       <img src="../Diagrams/ContainersDiagramMIR.png" alt="C4-Context-Diagram-of-MIR" style="width: 100%">
+      <p>
+        As seen in the diagrams above we'll be having the following functionalities an user can interact with throughout our website:
+        <ul>
+          <ol type="1">
+            <li>Login</li>
+            <li>Register</li>
+            <li>Create a new migration</li>
+            <li>Update a migration</li>
+            <li>Delete a migration</li>
+            <li>See a migration in details</li>
+            <li>See a list of migrations</li>
+            <li>Interact with an inteligent map that displays migrations</li>
+          </ol>
+        </ul>
+      </p>
     </section>
     <section id="external-data">
       <h3>4.2. External Data Sources</h3>
       <p>
-          MIR will use  external data sources such as:
+        MIR will use  external data sources such as:
       </p>
       <ul>
-          <li>Migration Data API - that will help us in managing the functionalities</li>
-          <li>Geolocation Services - that will help us in showing the migrations on a map</li>
+        <li>Migration Data API - that will help us in managing the functionalities</li>
+        <li>Geolocation Services - that will help us in showing the migrations on a map</li>
       </ul>
     </section>
     <section id="linked-data">
       <h3>4.3 Conforming with linked data principles</h3>
       <p>
-          The solution implemented in MIR will use linked data principles, ensuring data interoperability and accessibility. For our project, we think at these possible solutions:
+        The solution implemented in MIR will use linked data principles, ensuring data interoperability and accessibility. For our project, we think at these possible solutions:
       </p>
       <ul>
-          <li>Usage of Uniform Resource Identifiers (URIs) for data identification</li>
-          <li>Linking data elements through RDF (Resource Description Framework)</li>
+        <li>Usage of Uniform Resource Identifiers (URIs) for data identification</li>
+        <li>Linking data elements through RDF (Resource Description Framework)</li>
       </ul>
+    </section>
+    <section id="in-depth-functionalities">
+      <h3>4.3. Functionalities in depth</h3>
+      This section will describe the functionalities mentioned in <a href="#internal-data">4.1</a>
+      <ul>
+        <ol type="1">
+          <li>Login</li>
+          A guest can log in to become a user of the application in order to have access to some functionalities as: create a migration, delete a migration, edit a migration, see the list of migrations a user has created.
+          <li>Register</li>
+          A guest can register to become a user of the application in order to have access to some of the functionalities as: create a migration, delete a migration, edit a migration, see the list of migrations a user has created. A guest will be restrictioned from accessing every functionality on the website, but he will have access to: interaction with map, seeing one migration in detail.
+          <li>CRUD on migration</li>
+          This can only be performed by a user throughout our website. They will be able to create, read, update and delete a migration interacting with our interface.
+          <li>See a list of migrations</li>
+          This can only be performed by a user. This functionality will allow the user to see all the migrations he has created giving giving him the posibility of editing and deleting the migration.
+          <li>Interaction with inteligent map</li>
+          Either an user or a guest can have access to this functionality. They will be able to interact with this map to see what others have posted.
+        </ol>
+      </li>
     </section>
   </section>
 
