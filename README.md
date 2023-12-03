@@ -76,8 +76,6 @@ Project Link: https://github.com/Dragos101/ProiectWeb
 <!-- Acknowledgments -->
 ## :gem: Acknowledgements
 
-Use this section to mention useful resources and libraries that you have used in your projects.
-
  - [Awesome README](https://github.com/Louis3797/awesome-readme-template/)
  - [C4 Diagrams](https://c4model.com/)
  - [Draw.io](https://www.drawio.com/)

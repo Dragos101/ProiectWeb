@@ -151,7 +151,7 @@
       <p>
         As seen in the diagrams above we'll be having the following functionalities an user can interact with throughout our website:
         <ul>
-          <ol type="1">
+          <ol>
             <li>Login</li>
             <li>Register</li>
             <li>Create a new migration</li>
@@ -160,6 +160,23 @@
             <li>See a migration in details</li>
             <li>See a list of migrations</li>
             <li>Interact with an inteligent map that displays migrations</li>
+          </ol>
+        </ul>
+      </p>
+      <p>
+        In the early stage of building the architecture with MIR, we have thought that the following models will suit perfectly the needs for our models:
+        <ul>
+          <ol>
+            <li>User</li>
+            <img src="swagger-models/user.png" alt="User-Model" style="width: 100%">
+            <li>Migration</li>
+            <img src="swagger-models/migration.png" alt="Migration-Model" style="width: 100%">
+            <li>MigrationType</li>
+            <img src="swagger-models/migration-type.png" alt="Migration-Type-Model" style="width: 100%">
+            <li>MigrationContext</li>
+            <img src="swagger-models/migration-context.png" alt="Migration-Context-Model" style="width: 100%">
+            <li>MigrationLocation</li>
+            <img src="swagger-models/migrationLocation.png" alt="Migration-Location-Model" style="width: 100%">
           </ol>
         </ul>
       </p>
@@ -172,6 +189,7 @@
       <ul>
         <li>Migration Data API - that will help us in managing the functionalities</li>
         <li>Geolocation Services - that will help us in showing the migrations on a map</li>
+        The interactive map will be implemented using <a href="https://docs.mapbox.com/">Mapbox</a> since it fits all criterias we are looking for.
       </ul>
     </section>
     <section id="linked-data">
@@ -295,6 +313,13 @@
           property="schema:citation" id="un-development-data-landing">
         <cite property="schema:name">
           <a href="https://www.un.org/development/desa/pd/data-landing-page">UN Development Datasets</a>
+        </cite>
+      </li>
+      <li typeof="schema:WebPage" role="doc-biblioentry"
+          resource="https://docs.mapbox.com/"
+          property="schema:citation" id="map-box">
+        <cite property="schema:name">
+          <a href="https://docs.mapbox.com/">Mapbox Documentation</a>
         </cite>
       </li>
     </ol>   
