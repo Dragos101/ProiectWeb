@@ -3,10 +3,12 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { MigrationIndexComponent } from './features/migration/migration-index/migration-index.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    MigrationIndexComponent
   ],
   imports: [
     BrowserModule,
