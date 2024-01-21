@@ -1,0 +1,58 @@
+# Visual Studio Code
+.vscode/
+
+# User-specific files
+*.suo
+*.user
+*.userosscache
+*.suo
+*.sln.docstates
+
+# Compiled files
+bin/
+obj/
+
+# Visual Studio for Mac
+.idea/
+
+# User-specific files
+*.userprefs
+
+# Rider
+.idea/
+
+# User-specific files
+*.sln.iml
+
+# User-specific files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.suo
+*.suo
+*.suo
+*.suo
+
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+bld/
+[Bb]in/
+[Ll]og/
+[Ll]ogs/
+[Ll]og/
+[Ll]ogs/
+
+# Other files
+[Tt]humbs.db
+[Dd]esktop.ini
+*.log
+*.vspscc
+*.vssscc
