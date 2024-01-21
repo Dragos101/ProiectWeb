@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\mir-backend.props" />
+</Project>

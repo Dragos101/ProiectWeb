@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "CUnogZskcGG6psx77xerI07blopzCfY6wm82YP1ybuA=",
+  "Source": "mir-backend",
+  "BasePath": "_content/mir-backend",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
