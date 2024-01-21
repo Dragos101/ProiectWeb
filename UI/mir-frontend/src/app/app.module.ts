@@ -12,7 +12,7 @@ import { LandingPageComponent } from './features/landing-page/landing-page.compo
   declarations: [
     AppComponent,
     MigrationIndexComponent,
-    AddMigrationComponent
+    AddMigrationComponent,
     LandingPageComponent
   ],
   imports: [
