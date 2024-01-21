@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { MigrationIndexComponent } from './features/migration/migration-index/migration-index.component';
 import { AddMigrationComponent } from './features/migration/add-migration/add-migration.component';
+import { LandingPageComponent } from './features/landing-page/landing-page.component';
+
 
 const routes: Routes = [
   {
@@ -11,6 +13,10 @@ const routes: Routes = [
   {
     path: 'migrations/add',
     component: AddMigrationComponent
+  },
+  {
+    path: '',
+    component: LandingPageComponent
   }
 ];
 

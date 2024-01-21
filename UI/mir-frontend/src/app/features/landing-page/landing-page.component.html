@@ -1,0 +1,44 @@
+<div class="landing-page">
+  <div class="container">
+    <div class="landing-image">
+      <img src="/assets/landing-image.png" alt="landing-image" class="landing-image">
+    </div>
+    <div class="sign-in-methods">
+      <div class="name">
+        <h1>Migration Reporting Tool</h1>
+      </div>
+      <div class="options">
+        <div class="sign-option" *ngIf="showLogin">
+          <h4>Log In</h4>
+          <p>Enter your email and password to log in.</p>
+          <div class="body-option">
+            <input type="email" id="email_login" placeholder="Enter email" class="input-options">
+            <input type="password" id="pass_login" placeholder="Your password" class="input-options pass">
+          </div>
+          <div class="footer-option">
+            <div class="guest-option">
+              <a href="" (click)="toggleShow($event)">Don't have an account?</a>
+              <a routerLink="/migrations">Continue as Guest</a>
+            </div>
+            <button type="submit" id="login" class="submit-button">Submit</button>
+          </div>
+        </div>
+        <div class="sign-option" *ngIf="!showLogin">
+          <h4>Sign in</h4>
+          <p>Enter your email and password to sign in.</p>
+          <div class="body-option">
+            <input type="email" id="email_sign" placeholder="Enter email" class="input-options">
+            <input type="password" id="pass_sign" placeholder="Your password" class="input-options pass">
+          </div>
+          <div class="footer-option">
+            <div class="guest-option">
+              <a href="" (click)="toggleShow($event)">Already an user?</a>
+              <a routerLink="/migrations">Continue as Guest</a>
+            </div>
+            <button type="submit" id="login" class="submit-button">Submit</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
