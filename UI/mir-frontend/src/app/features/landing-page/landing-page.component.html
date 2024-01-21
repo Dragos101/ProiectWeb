@@ -1,7 +1,7 @@
 <div class="landing-page">
   <div class="container">
     <div class="landing-image">
-      <img src="/assets/landing-image.png" alt="landing-image" class="landing-image">
+      <img src="/assets/images/landing-image.png" alt="landing-image" class="landing-image">
     </div>
     <div class="sign-in-methods">
       <div class="name">
@@ -12,15 +12,15 @@
           <h4>Log In</h4>
           <p>Enter your email and password to log in.</p>
           <div class="body-option">
-            <input type="email" id="email_login" placeholder="Enter email" class="input-options">
-            <input type="password" id="pass_login" placeholder="Your password" class="input-options pass">
+            <input type="text" id="email_login" placeholder="Enter email" name="email" class="input-options" [(ngModel)]="model.email">
+            <input type="password" id="pass_login" placeholder="Your password" name="password" class="input-options pass" [(ngModel)]="model.password">
           </div>
           <div class="footer-option">
             <div class="guest-option">
               <a href="" (click)="toggleShow($event)">Don't have an account?</a>
               <a routerLink="/migrations">Continue as Guest</a>
             </div>
-            <button type="submit" id="login" class="submit-button">Submit</button>
+            <button type="submit" id="login" class="submit-button" (click)="onFormSubmit()">Submit</button>
           </div>
         </div>
         <div class="sign-option" *ngIf="!showLogin">
@@ -35,7 +35,7 @@
               <a href="" (click)="toggleShow($event)">Already an user?</a>
               <a routerLink="/migrations">Continue as Guest</a>
             </div>
-            <button type="submit" id="login" class="submit-button">Submit</button>
+            <button type="submit" id="login" class="submit-button" (click)="onFormSubmit()">Submit</button>
           </div>
         </div>
       </div>

@@ -6,6 +6,10 @@ import { AppComponent } from './app.component';
 import { MigrationIndexComponent } from './features/migration/migration-index/migration-index.component';
 import { AddMigrationComponent } from './features/migration/add-migration/add-migration.component';
 import { LandingPageComponent } from './features/landing-page/landing-page.component';
+import { NavbarComponent } from './core/components/navbar/navbar.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -13,11 +17,15 @@ import { LandingPageComponent } from './features/landing-page/landing-page.compo
     AppComponent,
     MigrationIndexComponent,
     AddMigrationComponent,
-    LandingPageComponent
+    LandingPageComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgbModule,
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
