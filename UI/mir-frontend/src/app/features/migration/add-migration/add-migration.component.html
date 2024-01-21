@@ -1,0 +1,58 @@
+<head>
+  <title>Add Migration Menu</title>
+</head>
+<body>
+  <div class = "navbar">
+    <div class="userinfo">
+        <div class="userphoto">
+          <img src="../../../../assets/images/img_avatar.png"  class="userphoto" alt="Avatar">
+        </div>
+        <div class="username">
+          Username Fictiv
+        </div>
+      </div>
+    <div class = "content-of-page">Add Migration Menu</div>
+  </div>
+  <div class="migrationForm">
+    <label for="name" class = "label">Name:</label>
+    <input type="text" id="name" name="name" required class = "input">
+
+    <label for="type" class = "label">Type:</label>
+    <select id="type" name="type" required class = "input">
+      <option value="humans">Humans</option>
+      <option value="birds">Birds</option>
+      <option value="animals">Animals</option>
+      <option value="aliens">Aliens</option>
+    </select>
+
+    <label for="description" class = "label">Description:</label>
+    <textarea id="description" name="description" rows="2" required class = "input"></textarea>
+
+    <label for="country" class = "label">Country:</label>
+    <select id="country" name="country" required class = "input">
+        <option value="usa">USA</option>
+        <option value="canada">Canada</option>
+        <option value="romania">Romania</option>
+    </select>
+
+    <label for="city" class = "label">City:</label>
+    <select id="city" name="city" required class = "input">
+      <option value = "Iasi">Iasi</option>
+    </select>
+
+    <label for="photo" class = "label">Photo URL:</label>
+    <input type="text" id="photo" name="photo" placeholder="URL of migration photo" class = "input">
+
+    <label for="context" class = "label">Context:</label>
+    <select id="context" name="context" required class = "input">
+        <option value="season">Season</option>
+        <option value="political">Political</option>
+        <option value="calamity">Calamity</option>
+    </select>
+
+    <!-- <label for="contextDetails" class = "label">Newsfeed link:</label>
+    <input type="text" id="contextDetails" name="contextDetails" placeholder="Additional context details or link" class = "input"> -->
+
+    <button type="submit" id="submitBtn" class = "button">Submit Migration</button>
+  </div>  
+</body>
