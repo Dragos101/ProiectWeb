@@ -10,6 +10,7 @@ import { NavbarComponent } from './core/components/navbar/navbar.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { MigrationDetailsComponent } from './features/migration/migration-details/migration-details.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { HttpClientModule } from '@angular/common/http';
     MigrationIndexComponent,
     AddMigrationComponent,
     LandingPageComponent,
-    NavbarComponent
+    NavbarComponent,
+    MigrationDetailsComponent
   ],
   imports: [
     BrowserModule,
