@@ -21,7 +21,12 @@
     </ng-template>
 
   </div>
-  <div class="column add-mig" *ngIf="user !== undefined && isIndex()">
-    <button class="btn btn-primary custom-button" [routerLink]="['/migrations/add']">Create New Migration</button>
-  </div>
+  <ng-container *ngIf="user !== undefined && hideIfLanding()">
+    <div class="column add-mig">
+      <button class="btn btn-primary custom-button" [routerLink]="['/migrations/add']">Create New Migration</button>
+    </div>
+    <div class="column add-mig">
+      <button class="btn btn-primary custom-button">View Migrations</button>
+    </div>
+  </ng-container>
 </nav>

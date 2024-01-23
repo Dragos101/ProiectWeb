@@ -1,47 +1,62 @@
-<head>
-  <title>Add Migration Menu</title>
-</head>
-<body>
+<div class="add-migration">
   <div class="migrationForm">
-    <label for="name" class = "label">Name:</label>
-    <input type="text" id="name" name="name" required class = "input">
+    <div class="rowm singlem">
+      <h1>Create a migration</h1>
+    </div>
 
-    <label for="type" class = "label">Type:</label>
-    <select id="type" name="type" required class = "input">
-      <option value="humans">Humans</option>
-      <option value="birds">Birds</option>
-      <option value="animals">Animals</option>
-      <option value="aliens">Aliens</option>
-    </select>
+    <div class="migration-name rowm">
+      <label for="name" class = "label">Name:</label>
+      <input type="text" id="name" name="name" required class = "input">
+    </div>
 
-    <label for="description" class = "label">Description:</label>
-    <textarea id="description" name="description" rows="2" required class = "input"></textarea>
+    <div class="migration-type rowm">
+      <label for="type" class = "label">Type:</label>
+      <select id="type" name="type" required class = "input">
+        <option value="humans">Humans</option>
+        <option value="birds">Birds</option>
+        <option value="animals">Animals</option>
+        <option value="aliens">Aliens</option>
+      </select>
+    </div>
 
-    <label for="country" class = "label">Country:</label>
-    <select id="country" name="country" required class = "input">
-        <option value="usa">USA</option>
-        <option value="canada">Canada</option>
-        <option value="romania">Romania</option>
-    </select>
+    <div class="migration-description rowm">
+      <label for="description" class = "label">Description:</label>
+      <textarea id="description" name="description" rows="2" required class = "input"></textarea>
+    </div>
 
-    <label for="city" class = "label">City:</label>
-    <select id="city" name="city" required class = "input">
-      <option value = "Iasi">Iasi</option>
-    </select>
+    <div class="migration-location rowm">
+      <label for="country" class = "label">Country:</label>
+      <select id="country" name="country" required class = "input">
+          <option value="usa">USA</option>
+          <option value="canada">Canada</option>
+          <option value="romania">Romania</option>
+      </select>
+    </div>
 
-    <label for="photo" class = "label">Photo URL:</label>
-    <input type="text" id="photo" name="photo" placeholder="URL of migration photo" class = "input">
+    <div class="migration-city rowm">
+      <label for="city" class = "label">City:</label>
+      <select id="city" name="city" required class = "input">
+        <option value = "Iasi">Iasi</option>
+      </select>
+    </div>
 
-    <label for="context" class = "label">Context:</label>
-    <select id="context" name="context" required class = "input">
-        <option value="season">Season</option>
-        <option value="political">Political</option>
-        <option value="calamity">Calamity</option>
-    </select>
+    <div class="migration-contenxt rowm">
+      <label for="context" class = "label">Context:</label>
+      <select id="context" name="context" required class = "input">
+          <option value="season">Season</option>
+          <option value="political">Political</option>
+          <option value="calamity">Calamity</option>
+      </select>
+    </div>
 
-    <!-- <label for="contextDetails" class = "label">Newsfeed link:</label>
-    <input type="text" id="contextDetails" name="contextDetails" placeholder="Additional context details or link" class = "input"> -->
+    <div class="migration-photo rowm">
+      <label for="photo" class = "label photo-label">Photo URL:</label>
+      <input type="file" id="photo" name="photo" class="photom">
+    </div>
 
-    <button type="submit" id="submitBtn" class = "button">Submit Migration</button>
+    <div class="migration-add-button singlem">
+      <button type="submit" id="submitBtn" class = "btn btn-primary custom-button">Submit Migration</button>
+    </div>
   </div>
-</body>
+</div>
+

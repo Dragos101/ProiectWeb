@@ -30,7 +30,7 @@ export class NavbarComponent implements OnInit {
     this.user = this.authService.getUser();
   }
 
-  isIndex(): boolean {
-    return this.router.url === '/migrations'
+  hideIfLanding(): boolean {
+    return this.router.url !== ''
   }
 }
