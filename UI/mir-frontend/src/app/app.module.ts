@@ -11,6 +11,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { MigrationDetailsComponent } from './features/migration/migration-details/migration-details.component';
+import { ViewMigrationsComponent } from './features/migration/view-migrations/view-migrations.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { MigrationDetailsComponent } from './features/migration/migration-detail
     AddMigrationComponent,
     LandingPageComponent,
     NavbarComponent,
-    MigrationDetailsComponent
+    MigrationDetailsComponent,
+    ViewMigrationsComponent
   ],
   imports: [
     BrowserModule,

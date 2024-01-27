@@ -4,6 +4,7 @@ import { MigrationIndexComponent } from './features/migration/migration-index/mi
 import { AddMigrationComponent } from './features/migration/add-migration/add-migration.component';
 import { LandingPageComponent } from './features/landing-page/landing-page.component';
 import { MigrationDetailsComponent } from './features/migration/migration-details/migration-details.component';
+import { ViewMigrationsComponent } from './features/migration/view-migrations/view-migrations.component';
 
 
 const routes: Routes = [
@@ -18,6 +19,10 @@ const routes: Routes = [
   {
     path: '',
     component: LandingPageComponent
+  },
+  {
+    path: 'migrations/view-migrations',
+    component: ViewMigrationsComponent
   },
   {
     path: 'migrations/:id',
