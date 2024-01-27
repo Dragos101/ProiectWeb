@@ -1,39 +1,43 @@
-<div class="body">
+<div class="migration-index">
   <div class="filters-bar">
-    <label for="timeFilter" class="filter">Time:</label>
-    <select id="timeFilter" name="timeFilter" class="selectbox">
-      <option value="today">Today</option>
-      <option value="thisWeek">This Week</option>
-      <option value="thisMonth">This Month</option>
-      <option value="thisYear">This Year</option>
-    </select>
+    <div class="bar">
+      <label for="timeFilter" class="filter">Time:</label>
+      <select id="timeFilter" name="timeFilter" class="selectbox">
+        <option value="today">Today</option>
+        <option value="thisWeek">This Week</option>
+        <option value="thisMonth">This Month</option>
+        <option value="thisYear">This Year</option>
+      </select>
 
-    <label for="entityFilter" class="filter">Entity:</label>
-    <select id="entityFilter" name="entityFilter" class="selectbox">
-      <option value="humans">Humans</option>
-      <option value="birds">Birds</option>
-      <option value="animals">Animals</option>
-    </select>
+      <label for="entityFilter" class="filter">Entity:</label>
+      <select id="entityFilter" name="entityFilter" class="selectbox">
+        <option value="humans">Humans</option>
+        <option value="birds">Birds</option>
+        <option value="animals">Animals</option>
+      </select>
 
-    <label for="seasonFilter" class="filter">Season:</label>
-    <select id="seasonFilter" name="seasonFilter" class="selectbox">
-      <option value="summer">Summer</option>
-      <option value="autumn">Autumn</option>
-      <option value="winter">Winter</option>
-      <option value="spring">Spring</option>
-    </select>
+      <label for="seasonFilter" class="filter">Season:</label>
+      <select id="seasonFilter" name="seasonFilter" class="selectbox">
+        <option value="summer">Summer</option>
+        <option value="autumn">Autumn</option>
+        <option value="winter">Winter</option>
+        <option value="spring">Spring</option>
+      </select>
 
-    <label for="migrationIdFilter" class="filter">MigrationID:</label>
-    <input type="text" id="migrationIdFilter" class="selectbox" name="migrationIdFilter" pattern="\d+" title="Please enter only numbers">
+      <label for="migrationIdFilter" class="filter">MigrationID:</label>
+      <input type="text" id="migrationIdFilter" class="selectbox" name="migrationIdFilter" pattern="\d+" title="Please enter only numbers">
 
-    <label for="latitudeInput" class="filter">Latitude:</label>
-    <input type="text" id="latitudeInput" class="selectbox" name="latitudeInput" placeholder="Enter latitude">
+      <label for="latitudeInput" class="filter">Latitude:</label>
+      <input type="text" id="latitudeInput" class="selectbox" name="latitudeInput" placeholder="Enter latitude">
 
-    <label for="longitudeInput" class="filter">Longitude:</label>
-    <input type="text" id="longitudeInput" class="selectbox" name="longitudeInput" placeholder="Enter longitude">
+      <label for="longitudeInput" class="filter">Longitude:</label>
+      <input type="text" id="longitudeInput" class="selectbox" name="longitudeInput" placeholder="Enter longitude">
 
-    <button type="button" id="submitCoordinates" class="filter">Submit</button>
+      <button type="button" id="submitCoordinates" class="filter">Submit</button>
+    </div>
   </div>
 
-
+  <div class="interactive-map">
+    <div class="map" id="map"></div>
+  </div>
 </div>

@@ -30,7 +30,8 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.sass"
+              "src/styles.sass",
+              "mapbox-gl/dist/mapbox-gl.css"
             ],
             "scripts": []
           },
