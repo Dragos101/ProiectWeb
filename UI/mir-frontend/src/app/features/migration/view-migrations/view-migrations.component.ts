@@ -10,12 +10,16 @@ export class ViewMigrationsComponent implements OnInit {
   description: string = 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolorum molestiae animi, explicabo nesciunt nobis qui soluta quia repellat tenetur et repellendus est, voluptatum expedita ullam, ut a aperiam ratione rem?'
   shortDescription?: string
 
-  showLessDescription() {
+  showLessDescription(): boolean {
     return this.description.length > 100
   }
 
-  hasMigrations() {
+  hasMigrations(): boolean {
     return this.migrations !== false
+  }
+
+  handleDeleteMigration(): void {
+    console.log("Delete works")
   }
 
   ngOnInit(): void {

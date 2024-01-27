@@ -25,7 +25,7 @@
         <div class="section-description">
           <ng-container *ngIf="showLessDescription(); else showDescription">
             <div class="description">
-              <p>
+              <p class="description-no-margin">
                 {{this.shortDescription}}...<a [routerLink]="['/migrations/1']">show more</a>
               </p>
             </div>
@@ -36,7 +36,7 @@
             </div>
           </ng-template>
         </div>
-        <button type="button" class="btn btn-danger">X</button>
+        <button type="button" class="btn btn-danger" (click)="handleDeleteMigration()">X</button>
       </div>
     </div>
   </ng-container>
