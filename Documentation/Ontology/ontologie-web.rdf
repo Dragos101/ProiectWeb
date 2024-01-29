@@ -1,0 +1,237 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.semanticweb.org/web-proj/MIR/"
+     xml:base="http://www.semanticweb.org/web-proj/MIR/"
+     xmlns:MIR="http://www.semanticweb.org/web-proj/MIR#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:MIRi="http://www.semanticweb.org/web-proj/MIRi#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/web-proj/MIR"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/web-proj/MIR#hasContext -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/web-proj/MIR#hasContext">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/web-proj/MIR#Migraton"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/web-proj/MIR#MigrationContext"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/web-proj/MIR#hasLocation -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/web-proj/MIR#hasLocation">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/web-proj/MIR#Migraton"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/web-proj/MIR#MigrationLocation"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/web-proj/MIR#hasType -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/web-proj/MIR#hasType">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/web-proj/MIR#Migraton"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/web-proj/MIR#MigrationContext"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/web-proj/MIR#category -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/web-proj/MIR#category">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/web-proj/MIR#MigrationType"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/web-proj/MIR#description -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/web-proj/MIR#description">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/web-proj/MIR#MigrationContext"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/web-proj/MIR#latitude -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/web-proj/MIR#latitude">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/web-proj/MIR#MigrationLocation"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/web-proj/MIR#longitude -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/web-proj/MIR#longitude">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/web-proj/MIR#MigrationLocation"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/web-proj/MIR#politicFactors -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/web-proj/MIR#politicFactors">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/web-proj/MIR#MigrationContext"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/web-proj/MIR#season -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/web-proj/MIR#season">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/web-proj/MIR#MigrationContext"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/web-proj/MIR#tumbnailUrl -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/web-proj/MIR#tumbnailUrl">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/web-proj/MIR#MigrationContext"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/web-proj/MIR#working -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/web-proj/MIR#working">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/web-proj/MIR#MigrationContext"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/web-proj/MIRi#calamity -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/web-proj/MIRi#calamity">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/web-proj/MIR#MigrationContext"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/web-proj/MIR#MigrationContext -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/web-proj/MIR#MigrationContext"/>
+    
+
+
+    <!-- http://www.semanticweb.org/web-proj/MIR#MigrationLocation -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/web-proj/MIR#MigrationLocation"/>
+    
+
+
+    <!-- http://www.semanticweb.org/web-proj/MIR#MigrationType -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/web-proj/MIR#MigrationType"/>
+    
+
+
+    <!-- http://www.semanticweb.org/web-proj/MIR#Migraton -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/web-proj/MIR#Migraton"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/web-proj/MIR#MContext -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/web-proj/MIR#MContext">
+        <rdf:type rdf:resource="http://www.semanticweb.org/web-proj/MIR#MigrationContext"/>
+        <MIR:description>Se deplaseaza pasarile calatoare din Romania</MIR:description>
+        <MIR:politicFactors>razboi</MIR:politicFactors>
+        <MIR:season>vara</MIR:season>
+        <MIR:tumbnailUrl>uri-spre-poza</MIR:tumbnailUrl>
+        <MIR:working>sezonul de agricultura</MIR:working>
+        <MIRi:calamity>pandemie</MIRi:calamity>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/web-proj/MIR#MLocatie -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/web-proj/MIR#MLocatie">
+        <rdf:type rdf:resource="http://www.semanticweb.org/web-proj/MIR#MigrationLocation"/>
+        <MIR:latitude rdf:datatype="http://www.w3.org/2001/XMLSchema#float">45.9432</MIR:latitude>
+        <MIR:longitude rdf:datatype="http://www.w3.org/2001/XMLSchema#float">24.9668</MIR:longitude>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/web-proj/MIR#MTip -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/web-proj/MIR#MTip">
+        <rdf:type rdf:resource="http://www.semanticweb.org/web-proj/MIR#MigrationType"/>
+        <MIR:category>pasari</MIR:category>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/web-proj/MIR#Migratie101 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/web-proj/MIR#Migratie101">
+        <rdf:type rdf:resource="http://www.semanticweb.org/web-proj/MIR#Migraton"/>
+        <MIR:hasContext rdf:resource="http://www.semanticweb.org/web-proj/MIR#MContext"/>
+        <MIR:hasLocation rdf:resource="http://www.semanticweb.org/web-proj/MIR#MLocatie"/>
+        <MIR:hasType rdf:resource="http://www.semanticweb.org/web-proj/MIR#MTip"/>
+    </owl:NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.26.2023-07-17T20:34:13Z) https://github.com/owlcs/owlapi -->
+
