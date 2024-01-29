@@ -21,7 +21,7 @@ const routes: Routes = [
     component: LandingPageComponent
   },
   {
-    path: 'migrations/view-migrations',
+    path: 'user/:id/migrations',
     component: ViewMigrationsComponent
   },
   {

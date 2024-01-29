@@ -14,6 +14,8 @@
             {{user?.email}}
           </button>
           <div class="dropdown-menu" ngbDropdownMenu  aria-labelledby="dropdownMenuButton">
+            <button ngbDropdownItem class="btn btn-primary" [routerLink]="['/migrations/add']">Create New Migration</button>
+            <button ngbDropdownItem class="btn btn-primary" [routerLink]="['/user/1/migrations']">View Migrations</button>
             <button ngbDropdownItem class="dropdown-item" (click)="onLogout()">Log out</button>
           </div>
         </div>
@@ -23,10 +25,7 @@
   </div>
   <ng-container *ngIf="user !== undefined && hideIfLanding()">
     <div class="column add-mig">
-      <button class="btn btn-primary custom-button" [routerLink]="['/migrations/add']">Create New Migration</button>
-    </div>
-    <div class="column add-mig">
-      <button class="btn btn-primary custom-button">View Migrations</button>
+      <button class="btn btn-primary custom-button" [routerLink]="['/migrations']">View Migrations</button>
     </div>
   </ng-container>
 </nav>

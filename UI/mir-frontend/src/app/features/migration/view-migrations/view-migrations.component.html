@@ -1,35 +1,49 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Migration Records</title>
-  </head>
-  <body>
+<div class="list-of-migrations-rect">
+  <ng-container *ngIf="hasMigrations() !== true; else noMigrations ">
     <div class = "container">
-      <div class="rectangle">
-        <h2>Migration 1</h2>
-        <p><b>Type:</b> humans</p>
-        <p><b>Country:</b>: USA</p>
-        <p><b>City:</b> New York</p>
-        <button><b>X</b></button>
+      <div class="title">
+        <h1>Migration List</h1>
       </div>
-  
-      <div class="rectangle">
-        <h2>Migration 2</h2>
-        <p><b>Type:</b> humans</p>
-        <p><b>Country:</b>: USA</p>
-        <p><b>City:</b> New York</p>
-        <button><b>X</b></button>
-      </div>
-  
-      <div class="rectangle">
-        <h2>Migration 3</h2>
-        <p><b>Type:</b> humans</p>
-        <p><b>Country:</b>: USA</p>
-        <p><b>City:</b> New York</p>
-        <button><b>X</b></button>
+      <div class="migration">
+        <div class="name">
+          <h2>Migration 1</h2>
+        </div>
+        <div class="section-generic">
+          <div class="info">
+            <p class="type">Type:</p>
+            <p>Humans</p>
+          </div>
+          <div class="info">
+            <p class="type">Country:</p>
+            <p>USA</p>
+          </div>
+          <div class="info">
+            <p class="type">City:</p>
+            <p>New York</p>
+          </div>
+        </div>
+        <div class="section-description">
+          <ng-container *ngIf="showLessDescription(); else showDescription">
+            <div class="description">
+              <p class="description-no-margin">
+                {{this.shortDescription}}...<a [routerLink]="['/migrations/1']">show more</a>
+              </p>
+            </div>
+          </ng-container>
+          <ng-template #showDescription>
+            <div class="description">
+              <p>{{this.description}}</p>
+            </div>
+          </ng-template>
+        </div>
+        <button type="button" class="btn btn-danger" (click)="handleDeleteMigration()">X</button>
       </div>
     </div>
-  </body>
-</html>
+  </ng-container>
+
+  <ng-template #noMigrations>
+    <div class="display-no-migrations">
+      <h3>No migrations found!</h3>
+    </div>
+  </ng-template>
+</div>

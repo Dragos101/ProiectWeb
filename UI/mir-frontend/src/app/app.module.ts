@@ -12,6 +12,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { MigrationDetailsComponent } from './features/migration/migration-details/migration-details.component';
 import { ViewMigrationsComponent } from './features/migration/view-migrations/view-migrations.component';
+import { NgxMapboxGLModule } from 'ngx-mapbox-gl';
+import { environment } from 'src/environments/environment.development';
 
 
 @NgModule({
@@ -29,7 +31,8 @@ import { ViewMigrationsComponent } from './features/migration/view-migrations/vi
     AppRoutingModule,
     NgbModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxMapboxGLModule
   ],
   providers: [],
   bootstrap: [AppComponent]

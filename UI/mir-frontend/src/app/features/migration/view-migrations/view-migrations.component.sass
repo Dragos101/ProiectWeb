@@ -1,20 +1,20 @@
-body 
+.list-of-migrations-rect
   display: flex
   justify-content: center
   align-items: center
-  height: 100vh
   margin: 0
 
-  .container 
+  .container
     display: flex
     flex-direction: column
     align-items: center
 
+  .title
+    padding: 30px
 
-  .rectangle
-    width: 50%
-    height: 10%
-    padding: 15px
+  .migration
+    width: 55%
+    padding: 20px
     border: 2px solid #3498db
     margin: 10px
     text-align: center
@@ -22,32 +22,29 @@ body
     background-color: #ecf0f1
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1)
 
-    p
-      text-align: left
+    .section-generic
+      display: flex
+      justify-content: space-around
+      padding-top: 10px
 
-    h2
-      margin-bottom: 10px
-      color: #3498db
+      .info
+        display: flex
+        font-size: 17px
 
-    span
-      display: block
-      margin-top: 5px
-      color: #555
+        .type
+          font-weight: bold
+          padding-right: 10px
+
+    .section-description
+      .description
+        text-align: justify
+        padding: 10px
+        font-size: 17px
+
+        .description-no-margin
+          margin-bottom: 0px
 
     button
       position: absolute
       top: 10px
       right: 10px
-      background-color: #a7223c
-      color: #fff
-      border: none
-      padding: 5px 10px
-      cursor: pointer
-      font-weight: bold
-      border-radius: 3px
-      transition: background-color 0.3s
-
-    .title-link 
-      text-decoration: none
-      color: #3498db
-    
