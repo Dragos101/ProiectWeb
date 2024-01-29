@@ -12,30 +12,30 @@
           <h4>Log In</h4>
           <p>Enter your email and password to log in.</p>
           <div class="body-option">
-            <input type="text" id="email_login" placeholder="Enter email" name="email" class="input-options" [(ngModel)]="model.email">
-            <input type="password" id="pass_login" placeholder="Your password" name="password" class="input-options pass" [(ngModel)]="model.password">
+            <input type="text" id="email_login" placeholder="Enter email" name="email" class="input-options" [(ngModel)]="loginModel.email">
+            <input type="password" id="pass_login" placeholder="Your password" name="password" class="input-options pass" [(ngModel)]="loginModel.password">
           </div>
           <div class="footer-option">
             <div class="guest-option">
               <a href="" (click)="toggleShow($event)">Don't have an account?</a>
               <a routerLink="/migrations">Continue as Guest</a>
             </div>
-            <button type="submit" id="login" class="submit-button" (click)="onFormSubmit()">Submit</button>
+            <button type="submit" id="login" class="submit-button" (click)="login()">Submit</button>
           </div>
         </div>
         <div class="sign-option" *ngIf="!showLogin">
           <h4>Sign in</h4>
           <p>Enter your email and password to sign in.</p>
           <div class="body-option">
-            <input type="email" id="email_sign" placeholder="Enter email" class="input-options">
-            <input type="password" id="pass_sign" placeholder="Your password" class="input-options pass">
+            <input type="email" id="email_sign" placeholder="Enter email" class="input-options" [(ngModel)]="registerModel.email">
+            <input type="password" id="pass_sign" placeholder="Your password" class="input-options pass" [(ngModel)]="registerModel.password">
           </div>
           <div class="footer-option">
             <div class="guest-option">
               <a href="" (click)="toggleShow($event)">Already an user?</a>
               <a routerLink="/migrations">Continue as Guest</a>
             </div>
-            <button type="submit" id="login" class="submit-button" (click)="onFormSubmit()">Submit</button>
+            <button type="submit" id="login" class="submit-button" (click)="register()">Submit</button>
           </div>
         </div>
       </div>

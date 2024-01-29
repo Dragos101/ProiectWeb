@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿        using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using mir_backend.Models.DTO;
 using mir_backend.Repositories.Interface;
@@ -65,9 +65,18 @@ namespace mir_backend.Controllers
                 // add role to user 
                 identityResult = await userManager.AddToRoleAsync(user, "Writer");
 
+                var roles = await userManager.GetRolesAsync(user);
+                var jwtToken = tokenRepository.CreateJwtToken(user, roles.ToList());
+                var response = new LoginResponseDto()
+                {
+                    Email = request.Email,
+                    Roles = roles.ToList(),
+                    Token = jwtToken
+                };
+
                 if (identityResult.Succeeded)
                 {
-                    return Ok();
+                    return Ok(response);
                 }
             }
             else
