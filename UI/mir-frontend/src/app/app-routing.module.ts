@@ -5,6 +5,7 @@ import { AddMigrationComponent } from './features/migration/add-migration/add-mi
 import { LandingPageComponent } from './features/landing-page/landing-page.component';
 import { MigrationDetailsComponent } from './features/migration/migration-details/migration-details.component';
 import { ViewMigrationsComponent } from './features/migration/view-migrations/view-migrations.component';
+import { EditMigrationComponent } from './features/migration/edit-migration/edit-migration.component';
 
 
 const routes: Routes = [
@@ -15,6 +16,10 @@ const routes: Routes = [
   {
     path: 'migrations/add',
     component: AddMigrationComponent
+  },
+  {
+    path: 'migrations/edit',
+    component: EditMigrationComponent
   },
   {
     path: '',

@@ -14,6 +14,7 @@ import { MigrationDetailsComponent } from './features/migration/migration-detail
 import { ViewMigrationsComponent } from './features/migration/view-migrations/view-migrations.component';
 import { NgxMapboxGLModule } from 'ngx-mapbox-gl';
 import { environment } from 'src/environments/environment.development';
+import { EditMigrationComponent } from './features/migration/edit-migration/edit-migration.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { environment } from 'src/environments/environment.development';
     LandingPageComponent,
     NavbarComponent,
     MigrationDetailsComponent,
-    ViewMigrationsComponent
+    ViewMigrationsComponent,
+    EditMigrationComponent
   ],
   imports: [
     BrowserModule,
