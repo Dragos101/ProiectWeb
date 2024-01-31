@@ -20,11 +20,6 @@ builder.Services.AddDbContext<AuthDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("BackendAuthString"));
 });
 
-builder.Services.AddSingleton<MigrationDbContext>(provider =>
-        new MigrationDbContext(builder.Configuration.GetConnectionString("uri"), 
-        builder.Configuration.GetConnectionString("username"), 
-        builder.Configuration.GetConnectionString("password")));
-
 builder.Services.AddScoped<ITokenRepository, TokenRepository>();
 
 builder.Services.AddIdentityCore<IdentityUser>()
@@ -55,6 +50,11 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
           IssuerSigningKey = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"])),
       };
   });
+
+builder.Services.AddHttpClient();
+builder.Services.AddHttpClient<MigrationDbContext>();
+
+
 
 var app = builder.Build();
 
