@@ -1,5 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using mir_backend.Data;
+using mir_backend.Models.DTO;
+using mir_backend.Repositories.Implementation;
+using mir_backend.Repositories.Interface;
 using Newtonsoft.Json;
 using System.Xml.Linq;
 
@@ -10,58 +13,57 @@ namespace mir_backend.Controllers
     [Route("[controller]")]
     public class MigrationController : Controller
     {
-        private readonly MigrationDbContext _db;
-        public MigrationController(MigrationDbContext context)
+        private readonly IMigrationRepository migrationService;
+
+        public MigrationController(IMigrationRepository migrationService)
         {
-            _db = context;
+            this.migrationService = migrationService;
         }
 
         [HttpGet]
-        public async Task<IActionResult> Get()
+        [Route("/salut")]
+        public async Task<IActionResult> getTry()
         {
-            var sparqlQuery = @"
-            PREFIX ex: <http://www.semanticweb.org/web-proj/MIR#>
-            SELECT ?migration ?working ?thumbnailUrl ?politicFactors ?migrationDescription ?calamity ?longitude ?latitude ?category
-            WHERE {
-              ?migration a ex:Migration ;
-                         ex:hasContext ?context ;
-                         ex:hasLocation ?location ;
-                         ex:hasType ?type .
-             
-              ?context ex:working ?working ;
-                       ex:thumbnailUrl ?thumbnailUrl ;
-                       ex:politicFactors ?politicFactors ;
-                       ex:description ?migrationDescription ;
-                       ex:calamity ?calamity .
-           
-              ?location ex:longitude ?longitude ;
-                        ex:latitude ?latitude .
-            
-              ?type ex:category ?category .
-            }";
-            var xmlResult = await _db.ExecuteSparqlQueryAsync(sparqlQuery);
+            var allMigrations = await this.migrationService.getAllAsync();
+
+            return Ok(allMigrations);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetAll()
+        {
+            var allMigrations = await this.migrationService.getAllAsync();
 
             // Parse the XML result
-            var doc = XDocument.Parse(xmlResult);
-            XNamespace ns = "http://www.w3.org/2005/sparql-results#";
-
-            var migrations = doc.Descendants(ns + "result").Select(result => new
-            {
-                MigrationDescription = result.Elements(ns + "binding").FirstOrDefault(e => e.Attribute("name")?.Value == "migrationDescription")?.Element(ns + "literal")?.Value,
-                Calamity = result.Elements(ns + "binding").FirstOrDefault(e => e.Attribute("name")?.Value == "calamity")?.Element(ns + "literal")?.Value,
-                Latitude = result.Elements(ns + "binding").FirstOrDefault(e => e.Attribute("name")?.Value == "latitude")?.Element(ns + "literal")?.Value,
-                MigrationUri = result.Elements(ns + "binding").FirstOrDefault(e => e.Attribute("name")?.Value == "migration")?.Element(ns + "uri")?.Value,
-                Working = result.Elements(ns + "binding").FirstOrDefault(e => e.Attribute("name")?.Value == "working")?.Element(ns + "literal")?.Value,
-                PoliticFactors = result.Elements(ns + "binding").FirstOrDefault(e => e.Attribute("name")?.Value == "politicFactors")?.Element(ns + "literal")?.Value,
-                Category = result.Elements(ns + "binding").FirstOrDefault(e => e.Attribute("name")?.Value == "category")?.Element(ns + "literal")?.Value,
-                ThumbnailUrl = result.Elements(ns + "binding").FirstOrDefault(e => e.Attribute("name")?.Value == "thumbnailUrl")?.Element(ns + "literal")?.Value,
-                Longitude = result.Elements(ns + "binding").FirstOrDefault(e => e.Attribute("name")?.Value == "longitude")?.Element(ns + "literal")?.Value,
-            }).ToList();
+            var migrations = FromXmlToJson(allMigrations);
 
             // Convert the list of objects to JSON
             var json = JsonConvert.SerializeObject(migrations, Formatting.Indented);
 
             return Ok(json);
         }
+
+        private List<MigrationResponseDto> FromXmlToJson(string allMigrations)
+        {
+            var doc = XDocument.Parse(allMigrations);
+            XNamespace ns = "http://www.w3.org/2005/sparql-results#";
+
+            var migrations = doc.Descendants(ns + "result").Select(result => new MigrationResponseDto
+            {
+                UserId = Guid.TryParse(result.Elements(ns + "binding").FirstOrDefault(e => e.Attribute("name")?.Value == "userId")?.Element(ns + "literal")?.Value, out Guid guid) ? guid : Guid.Empty,
+                Description = result.Elements(ns + "binding").FirstOrDefault(e => e.Attribute("name")?.Value == "migrationDescription")?.Element(ns + "literal")?.Value,
+                Calamity = result.Elements(ns + "binding").FirstOrDefault(e => e.Attribute("name")?.Value == "calamity")?.Element(ns + "literal")?.Value,
+                Working = result.Elements(ns + "binding").FirstOrDefault(e => e.Attribute("name")?.Value == "working")?.Element(ns + "literal")?.Value == "true" ? "Yes" : "No", // Adjust based on your Working property type
+                PoliticFactors = result.Elements(ns + "binding").FirstOrDefault(e => e.Attribute("name")?.Value == "politicFactors")?.Element(ns + "literal")?.Value,
+                Category = result.Elements(ns + "binding").FirstOrDefault(e => e.Attribute("name")?.Value == "category")?.Element(ns + "literal")?.Value,
+                ThumbnailUrl = result.Elements(ns + "binding").FirstOrDefault(e => e.Attribute("name")?.Value == "thumbnailUrl")?.Element(ns + "literal")?.Value,
+                Season = result.Elements(ns + "binding").FirstOrDefault(e => e.Attribute("name")?.Value == "season")?.Element(ns + "literal")?.Value,
+                Longitude = float.TryParse(result.Elements(ns + "binding").FirstOrDefault(e => e.Attribute("name")?.Value == "longitude")?.Element(ns + "literal")?.Value, out float lon) ? lon : 0,
+                Latitude = float.TryParse(result.Elements(ns + "binding").FirstOrDefault(e => e.Attribute("name")?.Value == "latitude")?.Element(ns + "literal")?.Value, out float lat) ? lat : 0
+            }).ToList();
+
+            return migrations;
+        }
+
     }
 }
