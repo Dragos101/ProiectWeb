@@ -19,24 +19,29 @@ namespace mir_backend.Repositories.Implementation
             SELECT ?userId ?migration ?working ?thumbnailUrl ?politicFactors ?migrationDescription ?calamity ?longitude ?latitude ?season ?category
             WHERE {
               ?migration a ex:Migration ;
-                         ex:hasContext ?context ;
-                         ex:hasLocation ?location ;
-                         ex:hasType ?type ;
                          ex:userId ?userId .
              
-              ?context ex:season ?season ;
-                       ex:working ?working ;
-                       ex:thumbnailUrl ?thumbnailUrl ;
-                       ex:politicFactors ?politicFactors ;
-                       ex:description ?migrationDescription ;
-                       ex:calamity ?calamity .
-           
-              ?location ex:longitude ?longitude ;
-                        ex:latitude ?latitude .
-            
-              ?type ex:category ?category .
+              OPTIONAL {
+                ?migration ex:hasContext ?context .
+                OPTIONAL { ?context ex:season ?season . }
+                OPTIONAL { ?context ex:working ?working . }
+                OPTIONAL { ?context ex:thumbnailUrl ?thumbnailUrl . }
+                OPTIONAL { ?context ex:politicFactors ?politicFactors . }
+                OPTIONAL { ?context ex:description ?migrationDescription . }
+                OPTIONAL { ?context ex:calamity ?calamity . }
+              }
+  
+              OPTIONAL {
+                ?migration ex:hasLocation ?location .
+                OPTIONAL { ?location ex:longitude ?longitude . } 
+                OPTIONAL { ?location ex:latitude ?latitude . }
+              }
+  
+              OPTIONAL {
+                ?migration ex:hasType ?type .
+                OPTIONAL { ?type ex:category ?category . }
+              }
             }";
-
             var xmlResult = await _db.ExecuteSparqlQueryAsync(sparqlQuery);
             return xmlResult;
         }

@@ -21,15 +21,6 @@ namespace mir_backend.Controllers
         }
 
         [HttpGet]
-        [Route("/salut")]
-        public async Task<IActionResult> getTry()
-        {
-            var allMigrations = await this.migrationService.getAllAsync();
-
-            return Ok(allMigrations);
-        }
-
-        [HttpGet]
         public async Task<IActionResult> GetAll()
         {
             var allMigrations = await this.migrationService.getAllAsync();
