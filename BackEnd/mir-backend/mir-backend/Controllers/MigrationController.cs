@@ -120,6 +120,28 @@ namespace mir_backend.Controllers
             }
         }
         
+        [HttpGet]
+        [Route("/migration/{id}")]
+        public async Task<IActionResult> GetById(Guid id)
+        {
+            // Fetch the migration from the backend using the id
+            var migration = await migrationService.getByIdAsync(id);
+
+            if (migration == null)
+            {
+                return NotFound();
+            }
+
+            // Parse the XML result
+            var migrationJSON = FromXmlToJson(migration);
+            
+            // Convert the migration object to JSON
+            var json = JsonConvert.SerializeObject(migrationJSON, Formatting.Indented);
+
+            //JSON to the frontend
+            return Ok(json);
+        }
+
         private List<MigrationResponseDto> FromXmlToJson(string allMigrations)
         {
             var doc = XDocument.Parse(allMigrations);
