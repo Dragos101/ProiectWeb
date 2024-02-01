@@ -209,5 +209,69 @@ namespace mir_backend.Repositories.Implementation
             var xmlResult = await _db.ExecuteSparqlQueryAsync(sparqlQuery);
             return xmlResult;
         }
+
+        public async Task<string> updateMigration(Guid id, MigrationRequestDto request)
+        {
+          // Assuming MigrationUpdateRequest contains properties like Name, Category, etc.
+          // Prepare dynamic instance names
+          Guid newIdLocation = Guid.NewGuid();
+          Guid newIdContext = Guid.NewGuid();
+          Guid newIdType = Guid.NewGuid();
+
+          string migrationInstance = $"migration_{id.ToString().Replace("-", "_")}";
+          string migrationContextInstance = $"migrationContext_{newIdContext.ToString().Replace("-", "_")}";
+          string migrationLocationInstance = $"migrationLocation_{newIdLocation.ToString().Replace("-", "_")}";
+          string migrationTypeInstance = $"migrationType_{newIdType.ToString().Replace("-", "_")}";
+
+          string sparqlQuery = $@"
+          PREFIX ex: <http://www.semanticweb.org/web-proj/MIR#>
+
+          DELETE {{
+              ?migration ?p ?o .
+              ?context ?pc ?oc .
+              ?location ?pl ?ol .
+              ?type ?pt ?ot .
+          }}
+          INSERT {{
+              ex:{migrationInstance} a ex:Migration;
+                  ex:id ""{id}"";
+                  ex:userId ""{request.UserId}"";
+                  ex:migrationContextId ""{newIdContext}"";
+                  ex:migrationTypeId ""{newIdType}"";
+                  ex:migrationLocationId ""{newIdLocation}"".
+
+              ex:{migrationContextInstance} a ex:MigrationContext;
+                  ex:id ""{newIdContext}"";
+                  ex:name ""{request.Name}"";
+                  ex:season ""{request.Season}"";
+                  ex:working ""{request.Working}"";
+                  ex:politicFactors ""{request.PoliticFactors}"";
+                  ex:description ""{request.Description}"";
+                  ex:thumbnailUrl ""{request.ThumbnailUrl}"";
+                  ex:calamity ""{request.Calamity}"".
+              ex:{migrationInstance} ex:hasContext ex:{migrationContextInstance}.
+
+              ex:{migrationLocationInstance} a ex:MigrationLocation;
+                  ex:id ""{newIdLocation}"";
+                  ex:longitude ""{request.Longitude}"";
+                  ex:latitude ""{request.Latitude}"". 
+              ex:{migrationInstance} ex:hasLocation ex:{migrationLocationInstance}.
+
+              ex:{migrationTypeInstance} a ex:MigrationType;
+                  ex:id ""{newIdType}"";
+                  ex:category ""{request.Category}"".
+              ex:{migrationInstance} ex:hasType ex:{migrationTypeInstance}.
+          }}
+          WHERE {{
+              ?migration a ex:Migration; ex:id ""{id}"" .
+              OPTIONAL {{ ?migration ?p ?o . }}
+              OPTIONAL {{ ?migration ex:hasContext ?context . ?context ?pc ?oc . }}
+              OPTIONAL {{ ?migration ex:hasLocation ?location . ?location ?pl ?ol . }}
+              OPTIONAL {{ ?migration ex:hasType ?type . ?type ?pt ?ot . }}
+          }}";
+
+          var result = await _db.ExecuteSparqlQueryAsync(sparqlQuery, true);
+          return result;
+        }
     }
 }

@@ -142,6 +142,20 @@ namespace mir_backend.Controllers
             return Ok(json);
         }
 
+        [HttpPut]
+        [Route("/migration/{id}")]
+        public async Task<IActionResult> EditMigration([FromRoute]Guid id, [FromBody]MigrationRequestDto request){
+            try{
+                var result = await migrationService.updateMigration(id, request);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
+        }
+
         private List<MigrationResponseDto> FromXmlToJson(string allMigrations)
         {
             var doc = XDocument.Parse(allMigrations);

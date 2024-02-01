@@ -9,5 +9,6 @@ namespace mir_backend.Repositories.Interface
         Task<string> deleteMigration(Guid migrationId);
         Task<string> createMigration(MigrationDto migration, MigrationContextDto mc, MigrationTypeDto mt, MigrationLocationDto ml);
         Task<string> getByIdAsync(Guid id);
+        Task<string> updateMigration(Guid id, MigrationRequestDto request);
     }
 }
