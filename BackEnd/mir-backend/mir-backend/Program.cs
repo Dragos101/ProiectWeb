@@ -21,6 +21,7 @@ builder.Services.AddDbContext<AuthDbContext>(options =>
 });
 
 builder.Services.AddScoped<ITokenRepository, TokenRepository>();
+builder.Services.AddScoped<IMigrationRepository, MigrationRepository>();
 
 builder.Services.AddIdentityCore<IdentityUser>()
     .AddRoles<IdentityRole>()
@@ -50,6 +51,11 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
           IssuerSigningKey = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"])),
       };
   });
+
+builder.Services.AddHttpClient();
+builder.Services.AddHttpClient<MigrationDbContext>();
+
+
 
 var app = builder.Build();
 
