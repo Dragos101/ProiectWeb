@@ -47,6 +47,21 @@ namespace mir_backend.Controllers
             return Ok(json);
         }
 
+        [HttpDelete]
+        [Route("/migration/{migrationId}")]
+        public async Task<IActionResult> DestroyMigration([FromRoute] Guid migrationId)
+        {
+            try
+            {
+                var result = await this.migrationService.deleteMigration(migrationId);
+
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "An error occurred while attempting to delete the migration");
+            }
+        }
         private List<MigrationResponseDto> FromXmlToJson(string allMigrations)
         {
             var doc = XDocument.Parse(allMigrations);

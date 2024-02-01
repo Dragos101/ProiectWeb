@@ -85,5 +85,43 @@ namespace mir_backend.Repositories.Implementation
             var xmlResult = await _db.ExecuteSparqlQueryAsync(sparqlQuery);
             return xmlResult;
         }
+    
+        public async Task<string> deleteMigration(Guid migrationId)
+        {
+            string sparqlQuery = $@"
+            PREFIX ex: <http://www.semanticweb.org/web-proj/MIR
+
+            DELETE {{
+              ?migration ?p ?o .
+              ?context ?pc ?oc .
+              ?location ?pl ?ol .
+              ?type ?pt ?ot .
+            }}
+            WHERE {{
+              ?migration a ex:Migration ;
+                ex:id ""{migrationId}"" ;
+                ?p ?o .
+  
+              OPTIONAL {{
+                ?migration ex:hasContext ?context .
+                ?context ?pc ?oc .
+              }}
+  
+              OPTIONAL {{
+                ?migration ex:hasLocation ?location .
+                ?location ?pl ?ol .
+              }}
+  
+              OPTIONAL {{
+                ?migration ex:hasType ?type .
+                ?type ?pt ?ot .
+              }}
+            }}";
+
+            // Execute the SPARQL query
+            await _db.ExecuteSparqlQueryAsync(sparqlQuery, true);
+
+            return "Migration and related data deleted successfully.";
+        }
     }
 }

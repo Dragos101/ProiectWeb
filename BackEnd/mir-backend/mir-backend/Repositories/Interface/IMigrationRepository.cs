@@ -5,5 +5,7 @@
         Task<string> getAllAsync();
 
         Task<string> getUserMigrations(Guid userId);
+
+        Task<string> deleteMigration(Guid migrationId);
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Neo4j.Driver;
 using System.Net.Http.Headers;
 using System.Text;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace mir_backend.Data
 {
@@ -19,10 +20,11 @@ namespace mir_backend.Data
         }
 
         // Method to execute SPARQL query
-        public async Task<string> ExecuteSparqlQueryAsync(string sparqlQuery)
+        public async Task<string> ExecuteSparqlQueryAsync(string sparqlCommand, bool isUpdate = false)
         {
-            var content = new StringContent(sparqlQuery, Encoding.UTF8, "application/sparql-query");
-            var response = await _httpClient.PostAsync($"{_baseUri}{_dbName}/query", content);
+            var content = new StringContent(sparqlCommand, Encoding.UTF8, isUpdate ? "application/sparql-update" : "application/sparql-query");
+            var endpoint = isUpdate ? "update" : "query";
+            var response = await _httpClient.PostAsync($"{_baseUri}{_dbName}/{endpoint}", content);
             response.EnsureSuccessStatusCode();
 
             return await response.Content.ReadAsStringAsync();
