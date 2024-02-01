@@ -41,6 +41,7 @@ namespace mir_backend.Controllers
 
             var migrations = doc.Descendants(ns + "result").Select(result => new MigrationResponseDto
             {
+                Id = Guid.TryParse(result.Elements(ns + "binding").FirstOrDefault(e => e.Attribute("name")?.Value == "id")?.Element(ns + "literal")?.Value, out Guid id) ? id: Guid.Empty,
                 UserId = Guid.TryParse(result.Elements(ns + "binding").FirstOrDefault(e => e.Attribute("name")?.Value == "userId")?.Element(ns + "literal")?.Value, out Guid guid) ? guid : Guid.Empty,
                 Description = result.Elements(ns + "binding").FirstOrDefault(e => e.Attribute("name")?.Value == "migrationDescription")?.Element(ns + "literal")?.Value,
                 Calamity = result.Elements(ns + "binding").FirstOrDefault(e => e.Attribute("name")?.Value == "calamity")?.Element(ns + "literal")?.Value,

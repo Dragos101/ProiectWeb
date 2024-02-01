@@ -79,6 +79,18 @@
     
 
 
+    <!-- http://www.semanticweb.org/web-proj/MIR#id -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/web-proj/MIR#id">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/web-proj/MIR#MigrationContext"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/web-proj/MIR#MigrationLocation"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/web-proj/MIR#MigrationType"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/web-proj/MIR#Migraton"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    </owl:DatatypeProperty>
+    
+
+
     <!-- http://www.semanticweb.org/web-proj/MIR#latitude -->
 
     <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/web-proj/MIR#latitude">
@@ -93,6 +105,42 @@
     <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/web-proj/MIR#longitude">
         <rdfs:domain rdf:resource="http://www.semanticweb.org/web-proj/MIR#MigrationLocation"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/web-proj/MIR#migrationContextId -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/web-proj/MIR#migrationContextId">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/web-proj/MIR#MigrationContext"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/web-proj/MIR#migrationId -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/web-proj/MIR#migrationId">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/web-proj/MIR#Migraton"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/web-proj/MIR#migrationLocationId -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/web-proj/MIR#migrationLocationId">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/web-proj/MIR#MigrationLocation"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/web-proj/MIR#migrationTypeId -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/web-proj/MIR#migrationTypeId">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/web-proj/MIR#MigrationType"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
     </owl:DatatypeProperty>
     
 

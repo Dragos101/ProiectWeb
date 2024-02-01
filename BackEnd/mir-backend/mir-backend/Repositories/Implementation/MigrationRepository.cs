@@ -16,10 +16,11 @@ namespace mir_backend.Repositories.Implementation
         {
             var sparqlQuery = @"
             PREFIX ex: <http://www.semanticweb.org/web-proj/MIR#>
-            SELECT ?userId ?migration ?working ?thumbnailUrl ?politicFactors ?migrationDescription ?calamity ?longitude ?latitude ?season ?category
+            SELECT ?id ?userId ?migration ?working ?thumbnailUrl ?politicFactors ?migrationDescription ?calamity ?longitude ?latitude ?season ?category
             WHERE {
               ?migration a ex:Migration ;
-                         ex:userId ?userId .
+                ex:id ?id ;
+                ex:userId ?userId .
              
               OPTIONAL {
                 ?migration ex:hasContext ?context .
