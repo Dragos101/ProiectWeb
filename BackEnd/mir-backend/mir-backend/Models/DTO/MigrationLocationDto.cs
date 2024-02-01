@@ -1,7 +1,8 @@
 ﻿namespace mir_backend.Models.DTO
 {
-    public class MigratonLocationDto
+    public class MigrationLocationDto
     {
+        public Guid Id { get; set; }
         public float Latitude { get; set; }
         public float Longitude { get; set; }
     }
