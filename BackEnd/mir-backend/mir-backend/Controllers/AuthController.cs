@@ -33,6 +33,7 @@ namespace mir_backend.Controllers
                     var jwtToken = tokenRepository.CreateJwtToken(identityUser, roles.ToList());
                     var response = new LoginResponseDto()
                     {
+                        Id = identityUser.Id,
                         Email = request.Email,
                         Roles = roles.ToList(),
                         Token = jwtToken
@@ -69,6 +70,7 @@ namespace mir_backend.Controllers
                 var jwtToken = tokenRepository.CreateJwtToken(user, roles.ToList());
                 var response = new LoginResponseDto()
                 {
+                    Id = user.Id,
                     Email = request.Email,
                     Roles = roles.ToList(),
                     Token = jwtToken
