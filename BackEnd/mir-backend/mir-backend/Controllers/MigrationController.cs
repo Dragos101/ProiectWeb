@@ -19,6 +19,7 @@ namespace mir_backend.Controllers
         }
 
         [HttpGet]
+        [Route("/migrations")]
         public async Task<IActionResult> GetAll()
         {
             var allMigrations = await this.migrationService.getAllAsync();
