@@ -32,19 +32,21 @@ export class AuthService {
   }
 
   setUser(user: User): void {
-
     this.$user.next(user);
 
+    localStorage.setItem('user-id', user.id);
     localStorage.setItem('user-email', user.email);
     localStorage.setItem('user-roles', user.roles.join(','));
   }
 
   getUser(): User | undefined {
+    const id = localStorage.getItem('user-id');
     const email = localStorage.getItem('user-email');
     const roles = localStorage.getItem('user-roles');
 
-    if (email && roles) {
+    if (email && roles && id) {
       const user: User = {
+        id: id,
         email: email,
         roles: roles.split(',')
       }
