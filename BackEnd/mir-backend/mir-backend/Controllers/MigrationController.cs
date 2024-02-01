@@ -34,6 +34,19 @@ namespace mir_backend.Controllers
             return Ok(json);
         }
 
+        [HttpGet]
+        [Route("/user/{userId}/migrations")]
+        public async Task<IActionResult> GetAllMigrationsForUser([FromRoute] Guid userId)
+        {
+            var allMigrations = await this.migrationService.getUserMigrations(userId);
+
+            var migrations = FromXmlToJson(allMigrations);
+
+            var json = JsonConvert.SerializeObject(migrations, Formatting.Indented);
+            
+            return Ok(json);
+        }
+
         private List<MigrationResponseDto> FromXmlToJson(string allMigrations)
         {
             var doc = XDocument.Parse(allMigrations);
