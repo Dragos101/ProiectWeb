@@ -1,7 +1,5 @@
-﻿using Neo4j.Driver;
-using System.Net.Http.Headers;
+﻿using System.Net.Http.Headers;
 using System.Text;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace mir_backend.Data
 {

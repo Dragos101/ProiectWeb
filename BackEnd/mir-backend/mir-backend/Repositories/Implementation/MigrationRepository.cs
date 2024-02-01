@@ -91,8 +91,7 @@ namespace mir_backend.Repositories.Implementation
         public async Task<string> deleteMigration(Guid migrationId)
         {
             string sparqlQuery = $@"
-            PREFIX ex: <http://www.semanticweb.org/web-proj/MIR
-
+            PREFIX ex: <http://www.semanticweb.org/web-proj/MIR#>
             DELETE {{
               ?migration ?p ?o .
               ?context ?pc ?oc .
@@ -168,45 +167,45 @@ namespace mir_backend.Repositories.Implementation
                 ex:{migrationInstance} ex:hasType ex:{migrationTypeInstance} .
             }}";
 
-            var reponse = await _db.ExecuteSparqlQueryAsync(sparqlQuery , true);
+            var response = await _db.ExecuteSparqlQueryAsync(sparqlQuery, true);
 
-            return reponse;
+            return response;
         }
         public async Task<string> getByIdAsync(Guid id)
         {
-          var sparqlQuery = $@"
-          PREFIX ex: <http://www.semanticweb.org/web-proj/MIR#>
+            var sparqlQuery = $@"
+            PREFIX ex: <http://www.semanticweb.org/web-proj/MIR#>
 
-          SELECT ?id ?userId ?migration ?name ?working ?thumbnailUrl ?politicFactors ?migrationDescription ?calamity ?longitude ?latitude ?season ?category
-          WHERE {{
+            SELECT ?id ?userId ?migration ?name ?working ?thumbnailUrl ?politicFactors ?migrationDescription ?calamity ?longitude ?latitude ?season ?category
+            WHERE {{
             ?migration a ex:Migration ;
-              ex:id ?id ;
-              ex:userId ?userId .
+                ex:id ?id ;
+                ex:userId ?userId .
               
             FILTER (?id = ""{id}"")
               
             OPTIONAL {{
-              ?migration ex:hasContext ?context .
-              OPTIONAL {{ ?context ex:season ?season . }}
-              OPTIONAL {{ ?context ex:working ?working . }}
-              OPTIONAL {{ ?context ex:name ?name . }}
-              OPTIONAL {{ ?context ex:thumbnailUrl ?thumbnailUrl . }}
-              OPTIONAL {{ ?context ex:politicFactors ?politicFactors . }}
-              OPTIONAL {{ ?context ex:description ?migrationDescription . }}
-              OPTIONAL {{ ?context ex:calamity ?calamity . }}
+                ?migration ex:hasContext ?context .
+                OPTIONAL {{ ?context ex:season ?season . }}
+                OPTIONAL {{ ?context ex:working ?working . }}
+                OPTIONAL {{ ?context ex:name ?name . }}
+                OPTIONAL {{ ?context ex:thumbnailUrl ?thumbnailUrl . }}
+                OPTIONAL {{ ?context ex:politicFactors ?politicFactors . }}
+                OPTIONAL {{ ?context ex:description ?migrationDescription . }}
+                OPTIONAL {{ ?context ex:calamity ?calamity . }}
             }}
             
             OPTIONAL {{
-              ?migration ex:hasLocation ?location .
-              OPTIONAL {{ ?location ex:longitude ?longitude . }} 
-              OPTIONAL {{ ?location ex:latitude ?latitude . }}
+                ?migration ex:hasLocation ?location .
+                OPTIONAL {{ ?location ex:longitude ?longitude . }} 
+                OPTIONAL {{ ?location ex:latitude ?latitude . }}
             }}
             
             OPTIONAL {{
-              ?migration ex:hasType ?type .
-              OPTIONAL {{ ?type ex:category ?category . }}
+                ?migration ex:hasType ?type .
+                OPTIONAL {{ ?type ex:category ?category . }}
             }}
-          }}";
+            }}";
             var xmlResult = await _db.ExecuteSparqlQueryAsync(sparqlQuery);
             return xmlResult;
         }

@@ -58,7 +58,7 @@ namespace mir_backend.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(500, "An error occurred while attempting to delete the migration");
+                return StatusCode(500, ex.Message);
             }
         }
 
