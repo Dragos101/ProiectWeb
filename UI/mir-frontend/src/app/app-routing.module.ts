@@ -18,7 +18,7 @@ const routes: Routes = [
     component: AddMigrationComponent
   },
   {
-    path: 'migrations/edit',
+    path: 'migrations/:id/edit',
     component: EditMigrationComponent
   },
   {
