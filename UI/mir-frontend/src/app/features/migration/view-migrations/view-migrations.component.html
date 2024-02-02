@@ -4,7 +4,7 @@
       <div class="title">
         <h1>Migration List</h1>
       </div>
-      <div class="migration" *ngFor="let migration of migrations" (click)="handleRedirect(migration.Id)">
+      <div class="migration" *ngFor="let migration of migrations">
         <div class="name">
           <h2>{{migration.Name}}</h2>
         </div>
@@ -23,18 +23,11 @@
           </div>
         </div>
         <div class="section-description">
-          <ng-container *ngIf="showLessDescription(migration.Description); else showDescription">
-            <div class="description">
-              <p class="description-no-margin">
-                {{migration.Description.slice(0, 150)}}...<a [routerLink]="['/migration', migration.Id]">show more</a>
-              </p>
-            </div>
-          </ng-container>
-          <ng-template #showDescription>
-            <div class="description">
-              <p>{{migration.Description}}</p>
-            </div>
-          </ng-template>
+          <div class="description">
+            <p class="description-no-margin">
+              {{migration.Description.slice(0, 150)}}...<a [routerLink]="['/migration', migration.Id]">show more</a>
+            </p>
+          </div>
         </div>
         <button type="button" class="btn btn-danger" (click)="handleDeleteMigration(migration.Id)">X</button>
       </div>

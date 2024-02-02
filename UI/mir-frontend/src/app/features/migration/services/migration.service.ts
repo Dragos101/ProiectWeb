@@ -18,4 +18,8 @@ export class MigrationService {
   deleteMigration(id: string): Observable<string> {
     return this.http.delete<string>(`${environment.apiBaseUrl}/migration/${id}`)
   }
+
+  getMigration(id: string): Observable<MigrationModel[]> {
+    return this.http.get<MigrationModel[]>(`${environment.apiBaseUrl}/migration/${id}`)
+  }
 }

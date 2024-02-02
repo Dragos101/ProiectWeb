@@ -11,4 +11,6 @@ export interface MigrationModel {
   Latitude: number;
   Longitude: number;
   ThumbnailUrl: string;
+  City: string;
+  Country: string;
 }

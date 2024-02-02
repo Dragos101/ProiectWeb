@@ -1,20 +1,76 @@
 <div class="add-migration">
-  <div class="migration">
-    <div class="rowm migration-photo">
-      <img src="/assets/images/landing-image.png" alt="migration-image" class="migration-image img-fluid">
-    </div>
+  <ng-container *ngIf="!isLoading; else showSpinner" >
+    <div class="migration">
+      <div class="rowm migration-photo">
+        <img src="/assets/images/landing-image.png" alt="migration-image" class="migration-image img-fluid">
+      </div>
 
-    <div class="migration-name">
-      <h1>Migration Name</h1>
-    </div>
+      <div class="migration-name">
+        <h1>{{migration?.Name}}</h1>
+      </div>
 
-    <div class="rowm migration-user-details">
-      <span>Author</span>
-      <span>Date time when it was created / location</span>
-    </div>
+      <div class="migration-factors">
+        <div class="fhalf">
+          <div class="info">
+            <div class="label">
+              Country:
+            </div>
+            <div class="info">{{migration?.Country}}</div>
+          </div>
+          <div class="info">
+            <div class="label">
+              City:
+            </div>
+            <div class="info">{{migration?.City}}</div>
+          </div>
+          <div class="info">
+            <div class="label">
+              Category:
+            </div>
+            <div class="info">{{migration?.Category}}</div>
+          </div>
+          <div class="info">
+            <div class="label">
+              Category:
+            </div>
+            <div class="info">{{migration?.Category}}</div>
+          </div>
+          <div class="info">
+            <div class="label">
+              Season:
+            </div>
+            <div class="info">{{migration?.Season}}</div>
+          </div>
+        </div>
+        <div class="shalf">
+          <div class="info">
+            <div class="label">
+              Politic Factors:
+            </div>
+            <div class="info">{{migration?.PoliticFactors}}</div>
+          </div>
+          <div class="info">
+            <div class="label">
+              Calamity:
+            </div>
+            <div class="info">{{migration?.Calamity}}</div>
+          </div>
+          <div class="info">
+            <div class="label">
+              Working Issues:
+            </div>
+            <div class="info">{{migration?.Working}}</div>
+          </div>
+        </div>
+      </div>
 
-    <div class="rowm migration-details">
-      <span>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quidem eligendi natus facere ipsam iste eveniet nulla necessitatibus in voluptate excepturi fugiat vitae unde ea dolor minus veritatis, fuga iure corrupti.</span>
+      <div class="rowm migration-details">
+        <span>{{migration?.Description}}</span>
+      </div>
     </div>
-  </div>
+  </ng-container>
+  <ng-template #showSpinner >
+    <div class="spinner"></div>
+  </ng-template>
+
 </div>
