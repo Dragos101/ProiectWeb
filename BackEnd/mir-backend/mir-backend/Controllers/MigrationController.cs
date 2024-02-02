@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Azure.Core;
+using Microsoft.AspNetCore.Mvc;
 using mir_backend.Models.DTO;
 using mir_backend.Repositories.Interface;
 using Newtonsoft.Json;
@@ -72,6 +73,8 @@ namespace mir_backend.Controllers
                 Id = Guid.NewGuid(),
                 Latitude = request.Latitude,
                 Longitude = request.Longitude,
+                City = request.City,
+                Country = request.Country
             };
 
             var newMigrationType = new MigrationTypeDto()
@@ -173,6 +176,8 @@ namespace mir_backend.Controllers
                 Category = result.Elements(ns + "binding").FirstOrDefault(e => e.Attribute("name")?.Value == "category")?.Element(ns + "literal")?.Value,
                 ThumbnailUrl = result.Elements(ns + "binding").FirstOrDefault(e => e.Attribute("name")?.Value == "thumbnailUrl")?.Element(ns + "literal")?.Value,
                 Season = result.Elements(ns + "binding").FirstOrDefault(e => e.Attribute("name")?.Value == "season")?.Element(ns + "literal")?.Value,
+                Country = result.Elements(ns + "binding").FirstOrDefault(e => e.Attribute("name")?.Value == "country")?.Element(ns + "literal")?.Value,
+                City = result.Elements(ns + "binding").FirstOrDefault(e => e.Attribute("name")?.Value == "city")?.Element(ns + "literal")?.Value,
                 Longitude = float.TryParse(result.Elements(ns + "binding").FirstOrDefault(e => e.Attribute("name")?.Value == "longitude")?.Element(ns + "literal")?.Value, out float lon) ? lon : 0,
                 Latitude = float.TryParse(result.Elements(ns + "binding").FirstOrDefault(e => e.Attribute("name")?.Value == "latitude")?.Element(ns + "literal")?.Value, out float lat) ? lat : 0
             }).ToList();

@@ -11,10 +11,9 @@ import { AuthService } from 'src/app/features/auth/services/auth.service';
 
 export class NavbarComponent implements OnInit {
   user?: User;
+  userId?: string | null = null;
 
-  constructor(private authService: AuthService, private router: Router) {
-
-  }
+  constructor(private authService: AuthService, private router: Router) { }
 
   onLogout(): void {
     this.authService.logout();
@@ -25,9 +24,11 @@ export class NavbarComponent implements OnInit {
     this.authService.user().subscribe({
       next: (response) => {
         this.user = response;
-    }});
+      }});
 
     this.user = this.authService.getUser();
+    this.userId = localStorage.getItem('user-id')
+    console.log(this.userId)
   }
 
   hideIfLanding(): boolean {

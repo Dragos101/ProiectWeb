@@ -1,42 +1,42 @@
 <div class="list-of-migrations-rect">
-  <ng-container *ngIf="hasMigrations() !== true; else noMigrations ">
+  <ng-container *ngIf="hasMigrations() === true; else noMigrations ">
     <div class = "container">
       <div class="title">
         <h1>Migration List</h1>
       </div>
-      <div class="migration">
+      <div class="migration" *ngFor="let migration of migrations" (click)="handleRedirect(migration.Id)">
         <div class="name">
-          <h2>Migration 1</h2>
+          <h2>{{migration.Name}}</h2>
         </div>
         <div class="section-generic">
           <div class="info">
             <p class="type">Type:</p>
-            <p>Humans</p>
+            <p>{{migration.Category}}</p>
           </div>
           <div class="info">
-            <p class="type">Country:</p>
-            <p>USA</p>
+            <p class="type">Calamity:</p>
+            <p>{{migration.Calamity}}</p>
           </div>
           <div class="info">
-            <p class="type">City:</p>
-            <p>New York</p>
+            <p class="type">Season:</p>
+            <p>{{migration.Season}}</p>
           </div>
         </div>
         <div class="section-description">
-          <ng-container *ngIf="showLessDescription(); else showDescription">
+          <ng-container *ngIf="showLessDescription(migration.Description); else showDescription">
             <div class="description">
               <p class="description-no-margin">
-                {{this.shortDescription}}...<a [routerLink]="['/migrations/1']">show more</a>
+                {{migration.Description.slice(0, 150)}}...<a [routerLink]="['/migration', migration.Id]">show more</a>
               </p>
             </div>
           </ng-container>
           <ng-template #showDescription>
             <div class="description">
-              <p>{{this.description}}</p>
+              <p>{{migration.Description}}</p>
             </div>
           </ng-template>
         </div>
-        <button type="button" class="btn btn-danger" (click)="handleDeleteMigration()">X</button>
+        <button type="button" class="btn btn-danger" (click)="handleDeleteMigration(migration.Id)">X</button>
       </div>
     </div>
   </ng-container>

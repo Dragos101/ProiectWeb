@@ -15,7 +15,7 @@
           </button>
           <div class="dropdown-menu" ngbDropdownMenu  aria-labelledby="dropdownMenuButton">
             <button ngbDropdownItem class="btn btn-primary" [routerLink]="['/migrations/add']">Create New Migration</button>
-            <button ngbDropdownItem class="btn btn-primary" [routerLink]="['/user/1/migrations']">My Migrations</button>
+            <button ngbDropdownItem class="btn btn-primary" [routerLink]="['/user', userId, 'migrations']">My Migrations</button>
             <button ngbDropdownItem class="dropdown-item" (click)="onLogout()">Log out</button>
           </div>
         </div>

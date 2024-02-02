@@ -30,7 +30,7 @@ const routes: Routes = [
     component: ViewMigrationsComponent
   },
   {
-    path: 'migrations/:id',
+    path: 'migration/:id',
     component: MigrationDetailsComponent
   }
 ];
