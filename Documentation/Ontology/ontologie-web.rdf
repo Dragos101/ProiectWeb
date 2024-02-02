@@ -145,6 +145,15 @@
     
 
 
+    <!-- http://www.semanticweb.org/web-proj/MIR#name -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/web-proj/MIR#name">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/web-proj/MIR#MigrationContext"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
     <!-- http://www.semanticweb.org/web-proj/MIR#politicFactors -->
 
     <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/web-proj/MIR#politicFactors">

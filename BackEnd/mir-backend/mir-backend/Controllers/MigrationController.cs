@@ -1,7 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using mir_backend.Data;
 using mir_backend.Models.DTO;
-using mir_backend.Repositories.Implementation;
 using mir_backend.Repositories.Interface;
 using Newtonsoft.Json;
 using System.Xml.Linq;
@@ -21,6 +19,7 @@ namespace mir_backend.Controllers
         }
 
         [HttpGet]
+        [Route("/migrations")]
         public async Task<IActionResult> GetAll()
         {
             var allMigrations = await this.migrationService.getAllAsync();
@@ -34,6 +33,129 @@ namespace mir_backend.Controllers
             return Ok(json);
         }
 
+        [HttpGet]
+        [Route("/user/{userId}/migrations")]
+        public async Task<IActionResult> GetAllMigrationsForUser([FromRoute] Guid userId)
+        {
+            var allMigrations = await this.migrationService.getUserMigrations(userId);
+
+            var migrations = FromXmlToJson(allMigrations);
+
+            var json = JsonConvert.SerializeObject(migrations, Formatting.Indented);
+            
+            return Ok(json);
+        }
+
+        [HttpDelete]
+        [Route("/migration/{migrationId}")]
+        public async Task<IActionResult> DestroyMigration([FromRoute] Guid migrationId)
+        {
+            try
+            {
+                var result = await this.migrationService.deleteMigration(migrationId);
+
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
+
+        [HttpPost]
+        [Route("/migration")]
+        public async Task<IActionResult> CreateMigration([FromBody] MigrationRequestDto request)
+        {
+            // manipulate obj to create migration + other relationships
+            var newMigrationLocation = new MigrationLocationDto()
+            {
+                Id = Guid.NewGuid(),
+                Latitude = request.Latitude,
+                Longitude = request.Longitude,
+            };
+
+            var newMigrationType = new MigrationTypeDto()
+            {
+                Id = Guid.NewGuid(),
+                Category = request.Category,
+            };
+
+            var newMigrationContex = new MigrationContextDto()
+            {
+                Id = Guid.NewGuid(),
+                Name = request.Name,
+                PoliticFactors = request.PoliticFactors,
+                Calamity = request.Calamity,
+                Description = request.Description,
+                Season = request.Season,
+                Working = request.Working,
+                ThumbnailUri = request.ThumbnailUrl
+            };
+
+            var newMigration = new MigrationDto()
+            {
+                Id = Guid.NewGuid(),
+                UserId = request.UserId,
+                MigrationContextId = newMigrationContex.Id,
+                MigrationLocationId = newMigrationLocation.Id,
+                MigrationTypeId = newMigrationType.Id
+            };
+
+
+            // send to service to create
+            try
+            {
+                var response = await migrationService.createMigration(newMigration, newMigrationContex, newMigrationType, newMigrationLocation);
+
+                if (response != null)
+                {
+                    return Ok(response);
+                }
+
+                return BadRequest();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+        
+        [HttpGet]
+        [Route("/migration/{id}")]
+        public async Task<IActionResult> GetById(Guid id)
+        {
+            // Fetch the migration from the backend using the id
+            var migration = await migrationService.getByIdAsync(id);
+
+            if (migration == null)
+            {
+                return NotFound();
+            }
+
+            // Parse the XML result
+            var migrationJSON = FromXmlToJson(migration);
+            
+            // Convert the migration object to JSON
+            var json = JsonConvert.SerializeObject(migrationJSON, Formatting.Indented);
+
+            //JSON to the frontend
+            return Ok(json);
+        }
+
+        [HttpPut]
+        [Route("/migration/{id}")]
+        public async Task<IActionResult> EditMigration([FromRoute]Guid id, [FromBody]MigrationRequestDto request){
+            try{
+                var result = await migrationService.updateMigration(id, request);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
+        }
+
         private List<MigrationResponseDto> FromXmlToJson(string allMigrations)
         {
             var doc = XDocument.Parse(allMigrations);
@@ -44,6 +166,7 @@ namespace mir_backend.Controllers
                 Id = Guid.TryParse(result.Elements(ns + "binding").FirstOrDefault(e => e.Attribute("name")?.Value == "id")?.Element(ns + "literal")?.Value, out Guid id) ? id: Guid.Empty,
                 UserId = Guid.TryParse(result.Elements(ns + "binding").FirstOrDefault(e => e.Attribute("name")?.Value == "userId")?.Element(ns + "literal")?.Value, out Guid guid) ? guid : Guid.Empty,
                 Description = result.Elements(ns + "binding").FirstOrDefault(e => e.Attribute("name")?.Value == "migrationDescription")?.Element(ns + "literal")?.Value,
+                Name = result.Elements(ns + "binding").FirstOrDefault(e => e.Attribute("name")?.Value == "name")?.Element(ns + "literal")?.Value,
                 Calamity = result.Elements(ns + "binding").FirstOrDefault(e => e.Attribute("name")?.Value == "calamity")?.Element(ns + "literal")?.Value,
                 Working = result.Elements(ns + "binding").FirstOrDefault(e => e.Attribute("name")?.Value == "working")?.Element(ns + "literal")?.Value == "true" ? "Yes" : "No", // Adjust based on your Working property type
                 PoliticFactors = result.Elements(ns + "binding").FirstOrDefault(e => e.Attribute("name")?.Value == "politicFactors")?.Element(ns + "literal")?.Value,
