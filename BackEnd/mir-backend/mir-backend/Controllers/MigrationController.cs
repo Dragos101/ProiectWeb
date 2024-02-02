@@ -43,7 +43,7 @@ namespace mir_backend.Controllers
             var migrations = FromXmlToJson(allMigrations);
 
             var json = JsonConvert.SerializeObject(migrations, Formatting.Indented);
-            
+
             return Ok(json);
         }
 
@@ -122,7 +122,7 @@ namespace mir_backend.Controllers
                 return BadRequest(ex.Message);
             }
         }
-        
+
         [HttpGet]
         [Route("/migration/{id}")]
         public async Task<IActionResult> GetById(Guid id)
@@ -137,7 +137,7 @@ namespace mir_backend.Controllers
 
             // Parse the XML result
             var migrationJSON = FromXmlToJson(migration);
-            
+
             // Convert the migration object to JSON
             var json = JsonConvert.SerializeObject(migrationJSON, Formatting.Indented);
 
@@ -147,8 +147,10 @@ namespace mir_backend.Controllers
 
         [HttpPut]
         [Route("/migration/{id}")]
-        public async Task<IActionResult> EditMigration([FromRoute]Guid id, [FromBody]MigrationRequestDto request){
-            try{
+        public async Task<IActionResult> EditMigration([FromRoute] Guid id, [FromBody] MigrationRequestDto request)
+        {
+            try
+            {
                 var result = await migrationService.updateMigration(id, request);
                 return Ok(result);
             }
@@ -166,7 +168,7 @@ namespace mir_backend.Controllers
 
             var migrations = doc.Descendants(ns + "result").Select(result => new MigrationResponseDto
             {
-                Id = Guid.TryParse(result.Elements(ns + "binding").FirstOrDefault(e => e.Attribute("name")?.Value == "id")?.Element(ns + "literal")?.Value, out Guid id) ? id: Guid.Empty,
+                Id = Guid.TryParse(result.Elements(ns + "binding").FirstOrDefault(e => e.Attribute("name")?.Value == "id")?.Element(ns + "literal")?.Value, out Guid id) ? id : Guid.Empty,
                 UserId = Guid.TryParse(result.Elements(ns + "binding").FirstOrDefault(e => e.Attribute("name")?.Value == "userId")?.Element(ns + "literal")?.Value, out Guid guid) ? guid : Guid.Empty,
                 Description = result.Elements(ns + "binding").FirstOrDefault(e => e.Attribute("name")?.Value == "migrationDescription")?.Element(ns + "literal")?.Value,
                 Name = result.Elements(ns + "binding").FirstOrDefault(e => e.Attribute("name")?.Value == "name")?.Element(ns + "literal")?.Value,

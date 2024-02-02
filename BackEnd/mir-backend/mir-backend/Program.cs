@@ -1,3 +1,6 @@
+using Amazon;
+using Amazon.Extensions.NETCore.Setup;
+using Amazon.S3;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -54,8 +57,6 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 
 builder.Services.AddHttpClient();
 builder.Services.AddHttpClient<MigrationDbContext>();
-
-
 
 var app = builder.Build();
 

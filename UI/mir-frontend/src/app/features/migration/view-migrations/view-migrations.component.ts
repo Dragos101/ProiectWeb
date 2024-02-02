@@ -24,10 +24,6 @@ export class ViewMigrationsComponent implements OnInit {
     return this.migrations !== undefined && this.migrations?.length > 0
   }
 
-  handleRedirect(id: string): void {
-    this.router.navigateByUrl(`/migration/${id}`);
-  }
-
   handleDeleteMigration(migrationId: string): void {
     this.migrationService.deleteMigration(migrationId).subscribe({
       next: (response) => {
