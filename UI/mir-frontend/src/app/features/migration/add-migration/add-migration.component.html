@@ -69,7 +69,7 @@
 
     <div class="migration-thumbnail-url rowm">
       <label for="thumbnailUrl" class="label">Thumbnail URL:</label>
-      <input type="file" id="thumbnailUrl" name="thumbnailUrl" class="input" placeholder="Optional" [(ngModel)]="migration.ThumbnailUrl">
+      <input type="file" id="thumbnailUrl" name="thumbnailUrl" class="input" placeholder="Optional" (change)="uploadFile($event)">
     </div>
 
     <div class="migration-add-button singlem">

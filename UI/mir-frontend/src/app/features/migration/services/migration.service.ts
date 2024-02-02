@@ -27,4 +27,17 @@ export class MigrationService {
   createMigration(migration: MigrationRequest): Observable<string> {
     return this.http.post<string>(`${environment.apiBaseUrl}/migration`, migration);
   }
+
+  uploadFile(file: File, prefix?: string): Observable<any> {
+    const formData: FormData = new FormData();
+    formData.append('file', file);
+    if (prefix) {
+      formData.append('prefix', prefix);
+    }
+    return this.http.post(`${environment.apiBaseUrl}/files`, formData, {
+      reportProgress: true,
+      observe: 'events'
+    });
+  }
+
 }
