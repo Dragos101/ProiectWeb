@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MigrationService } from '../services/migration.service';
 import { MigrationRequest } from '../models/migration-request.model';
-import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { City } from '../models/city.model';
+import { Country } from '../models/country.model';
 
 @Component({
   selector: 'app-add-migration',
@@ -13,8 +15,11 @@ export class AddMigrationComponent implements OnInit {
   migration: MigrationRequest
   userId?: string | null = null
   file: File | null = null
+  countries: string[] = []
+  cities: string[] = []
 
-  constructor(private migrationService: MigrationService, private router: Router) {
+
+  constructor(private http: HttpClient, private migrationService: MigrationService, private router: Router) {
     this.migration = {
       UserId: "",
       Name: "",
@@ -37,6 +42,7 @@ export class AddMigrationComponent implements OnInit {
     if (this.userId){
       this.migration.UserId = this.userId;
     }
+    this.loadCountriesAndCities();
   }
 
   uploadFile(event: any): void {
@@ -53,6 +59,34 @@ export class AddMigrationComponent implements OnInit {
         })
       }
     }
+  }
+
+  loadCountriesAndCities(): void {
+    this.migrationService.getWorldData().subscribe(data => {
+      this.countries = data.map(item => item.country).filter((value, index, self) => self.indexOf(value) === index); // Extract unique countries
+    });
+  }
+
+  onCountryChange(): void {
+    this.migrationService.getWorldData().subscribe(data => {
+      const countryData = data.find(item => item.country === this.migration.Country);
+      if (countryData && countryData.cities) {
+        this.cities = countryData.cities.map((city: City) => city.name);
+      }
+    });
+  }
+
+  onCityChange(): void {
+    this.migrationService.getWorldData().subscribe(data => {
+      const countryData = data.find(item => item.country === this.migration.Country);
+      if (countryData) {
+        const selectedCity = countryData.cities.find(city => city.name === this.migration.City);
+        if (selectedCity) {
+          this.migration.Latitude = selectedCity.lat;
+          this.migration.Longitude = selectedCity.lon;
+        }
+      }
+    });
   }
 
   submitMigration(): void {

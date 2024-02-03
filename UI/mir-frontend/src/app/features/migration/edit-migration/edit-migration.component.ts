@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MigrationService } from '../services/migration.service';
 import { MigrationModel } from '../models/migration.model';
+import { City } from '../models/city.model';
 
 @Component({
   selector: 'app-edit-migration',
@@ -9,9 +10,11 @@ import { MigrationModel } from '../models/migration.model';
   styleUrls: ['./edit-migration.component.sass']
 })
 export class EditMigrationComponent implements OnInit {
-  migration?: MigrationModel
+  migration: MigrationModel
   migrationId: string | null = null
   file: File | null = null
+  countries: string[] = []
+  cities: string[] = []
 
   constructor(private router: Router, private params: ActivatedRoute, private migrationService: MigrationService) {
     this.migration = {
@@ -42,12 +45,13 @@ export class EditMigrationComponent implements OnInit {
           this.migrationService.getMigration(this.migrationId).subscribe({
             next: (response) => {
               this.migration = response[0]
-              console.log(this.migration)
+              this.loadCountriesAndCities();
             }
           })
         }
       }
     })
+    this.loadCountriesAndCities();
   }
 
   uploadFile(event: any): void {
@@ -64,6 +68,37 @@ export class EditMigrationComponent implements OnInit {
         })
       }
     }
+  }
+
+  loadCountriesAndCities(): void {
+    this.migrationService.getWorldData().subscribe(data => {
+      this.countries = data.map(item => item.country).filter((value, index, self) => self.indexOf(value) === index);
+      if (this.countries.includes(this.migration.Country)) {
+        this.onCountryChange();
+      }
+    });
+  }
+
+  onCountryChange(): void {
+    this.migrationService.getWorldData().subscribe(data => {
+      const countryData = data.find(item => item.country === this.migration.Country);
+      if (countryData && countryData.cities) {
+        this.cities = countryData.cities.map((city: City) => city.name);
+      }
+    });
+  }
+
+  onCityChange(): void {
+    this.migrationService.getWorldData().subscribe(data => {
+      const countryData = data.find(item => item.country === this.migration.Country);
+      if (countryData) {
+        const selectedCity = countryData.cities.find(city => city.name === this.migration.City);
+        if (selectedCity) {
+          this.migration.Latitude = selectedCity.lat;
+          this.migration.Longitude = selectedCity.lon;
+        }
+      }
+    });
   }
 
   submitMigration(): void {

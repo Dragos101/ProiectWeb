@@ -4,6 +4,7 @@ import { Observable, ObservedValueOf } from 'rxjs';
 import { MigrationModel } from '../models/migration.model';
 import { environment } from 'src/environments/environment.development';
 import { MigrationRequest } from '../models/migration-request.model';
+import { Country } from '../models/country.model';
 
 @Injectable({
   providedIn: 'root'
@@ -42,6 +43,14 @@ export class MigrationService {
 
   updateMigraton(id: string, migration: MigrationModel): Observable<string> {
     return this.http.put<string>(`${environment.apiBaseUrl}/migration/${id}`, migration);
+  }
+
+  getMigrations(): Observable<MigrationModel[]> {
+    return this.http.get<MigrationModel[]>(`${environment.apiBaseUrl}/migrations`);
+  }
+
+  getWorldData(): Observable<Country[]> {
+    return this.http.get<Country[]>('/assets/cities/worldcities.json');
   }
 
 }

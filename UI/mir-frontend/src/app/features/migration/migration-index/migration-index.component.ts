@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import * as mapboxgl from 'mapbox-gl';
 import { environment } from 'src/environments/environment.development';
+import { MigrationModel } from '../models/migration.model';
+import { MigrationService } from '../services/migration.service';
 
 @Component({
   selector: 'app-migration-index',
@@ -10,12 +12,20 @@ import { environment } from 'src/environments/environment.development';
 
 export class MigrationIndexComponent implements OnInit {
   map?: mapboxgl.Map
+  migrations: MigrationModel[]
 
-  constructor() {
+  constructor(private migrationService: MigrationService) {
     (mapboxgl as any).accessToken = environment.mapBoxApi
+    this.migrations = []
   }
 
   ngOnInit(): void {
+    this.migrationService.getMigrations().subscribe({
+      next: (response) => {
+        this.migrations = response
+      }
+    })
+
     this.map = new mapboxgl.Map({
       container: 'map',
       style: 'mapbox://styles/mapbox/streets-v11',
