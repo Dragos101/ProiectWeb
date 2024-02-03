@@ -1,24 +1,29 @@
 $button-bgcolor: #75a130
 
 .migration-index
-  .filters-bar
-    width: 100%
+  .migration-title
     display: flex
     justify-content: center
+    margin-top: 10px
 
-    .bar
-      background-color: #f2f2f2
-      padding: 10px
-      padding-right: calc(100vw - 100%)
-      border-bottom: 1px solid #ddd
-      width: 80%
+  .filters-bar
+    padding-left: 211px
 
+    .filters
+      .filter-title
+        display: flex
+        .show-link
+          padding-left: 10px
+          display: flex
+          justify-content: center
+          align-items: center
 
-    .filter
-      margin-right: 10px
+    .filter-category
+      display: flex
+      padding: 20px 0px
 
-    .selectbox
-      margin-right: 25px
+      .filter
+        padding-right: 20px
 
   .interactive-map
     display: flex

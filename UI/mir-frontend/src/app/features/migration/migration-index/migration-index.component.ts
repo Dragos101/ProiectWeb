@@ -14,10 +14,24 @@ import { Router } from '@angular/router';
 export class MigrationIndexComponent implements OnInit {
   map?: mapboxgl.Map
   migrations: MigrationModel[]
+  showFilters: boolean = false
 
   constructor(private router: Router, private migrationService: MigrationService) {
     (mapboxgl as any).accessToken = environment.mapBoxApi
     this.migrations = []
+  }
+
+  toggleShowFilters(event: Event): void {
+    this.showFilters = !this.showFilters
+    event.preventDefault();
+  }
+
+  onEntityFilterChange(event: Event) {
+
+  }
+
+  onSeasonFilterChange(event: Event) {
+
   }
 
   ngOnInit(): void {
