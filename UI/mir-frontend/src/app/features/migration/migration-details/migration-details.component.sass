@@ -1,3 +1,5 @@
+$button-bgcolor: #75a130
+
 .add-migration
   display: flex
   justify-content: center
@@ -48,6 +50,18 @@
     .migration-details
       margin-top: 20px
       font-size: 18px
+
+    .singlem
+      display: flex
+      justify-content: end
+
+      .custom-button
+        background-color: $button-bgcolor
+        height: fit-content
+        border-color: $button-bgcolor
+        font-size: 20px
+        padding: 10px 20px
+
   .spinner
     border: 4px solid rgba(0, 0, 0, .1)
     width: 40px

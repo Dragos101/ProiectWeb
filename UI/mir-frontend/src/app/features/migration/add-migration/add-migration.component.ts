@@ -46,7 +46,7 @@ export class AddMigrationComponent implements OnInit {
         this.migrationService.uploadFile(this.file, "images").subscribe({
           next: (response) => {
             if (response && response.body.url) {
-              this.migration = response.body.url;
+              this.migration.ThumbnailUrl = response.body.url;
               console.log(this.migration)
             }
           }

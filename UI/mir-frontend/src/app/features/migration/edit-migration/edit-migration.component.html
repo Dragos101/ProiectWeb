@@ -1,41 +1,41 @@
-<div class="add-migration">
+<form (ngSubmit)="submitMigration()" class="add-migration">
   <div class="migrationForm">
     <div class="rowm singlem">
-      <h1>Edit migration</h1>
+      <h1>Create a migration</h1>
     </div>
 
     <div class="migration-name rowm">
       <label for="name" class="label">Name:</label>
-      <input type="text" id="name" name="name" required class="input">
+      <input type="text" id="name" name="name" [(ngModel)]="migration!.Name" required class="input">
     </div>
 
     <div class="migration-type rowm">
       <label for="type" class="label">Type:</label>
-      <select id="type" name="type" required class="input">
-        <option value="humans">Humans</option>
-        <option value="birds">Birds</option>
-        <option value="animals">Animals</option>
-        <option value="aliens">Aliens</option>
+      <select id="type" name="type" required class="input" [(ngModel)]="migration!.Category">
+        <option value="Humans">Humans</option>
+        <option value="Birds">Birds</option>
+        <option value="Animals">Animals</option>
+        <option value="Aliens">Aliens</option>
       </select>
     </div>
 
     <div class="migration-description rowm">
       <label for="description" class="label">Description:</label>
-      <textarea id="description" name="description" rows="2" required class="input"></textarea>
+      <textarea id="description" name="description" rows="2" required class="input" [(ngModel)]="migration!.Description"></textarea>
     </div>
 
     <div class="migration-location rowm">
       <label for="country" class="label">Country:</label>
-      <select id="country" name="country" required class="input">
-        <option value="usa">USA</option>
-        <option value="canada">Canada</option>
-        <option value="romania">Romania</option>
+      <select id="country" name="country" required class="input" [(ngModel)]="migration!.Country">
+        <option value="Usa">USA</option>
+        <option value="Canada">Canada</option>
+        <option value="Romania">Romania</option>
       </select>
     </div>
 
     <div class="migration-city rowm">
       <label for="city" class="label">City:</label>
-      <select id="city" name="city" required class="input">
+      <select id="city" name="city" required class="input" [(ngModel)]="migration!.City">
         <option value="Iasi">Iasi</option>
         <option value = "Vaslui">Vaslui</option>
         <option value = "Vaslui">Pascani</option>
@@ -44,37 +44,38 @@
 
     <div class="migration-season rowm">
       <label for="season" class="label">Season:</label>
-      <select id="season" name="season" required class="input">
-        <option value="summer">Summer</option>
-        <option value="autumn">Autumn</option>
-        <option value="winter">Winter</option>
-        <option value="spring">Spring</option>
+      <select id="season" name="season" required class="input" [(ngModel)]="migration!.Season">
+        <option value="Summer">Summer</option>
+        <option value="Autumn">Autumn</option>
+        <option value="Winter">Winter</option>
+        <option value="Spring">Spring</option>
       </select>
     </div>
 
     <div class="migration-working rowm">
       <label for="working" class="label">Working:</label>
-      <input type="text" id="working" name="working" class="input" placeholder="Optional - Specify if applicable">
+      <input type="text" id="working" name="working" class="input" placeholder="Optional - Specify if applicable" [(ngModel)]="migration!.Working">
     </div>
 
     <div class="migration-politic-factors rowm">
       <label for="politicFactors" class="label">Political Factors:</label>
-      <input type="text" id="politicFactors" name="politicFactors" class="input" placeholder="Optional - Specify if applicable">
+      <input type="text" id="politicFactors" name="politicFactors" class="input" placeholder="Optional - Specify if applicable" [(ngModel)]="migration!.PoliticFactors">
     </div>
 
     <div class="migration-calamity rowm">
       <label for="calamity" class="label">Calamity:</label>
-      <input type="text" id="calamity" name="calamity" class="input" placeholder="Optional - Specify if applicable">
+      <input type="text" id="calamity" name="calamity" class="input" placeholder="Optional - Specify if applicable" [(ngModel)]="migration!.Calamity">
     </div>
-
 
     <div class="migration-thumbnail-url rowm">
       <label for="thumbnailUrl" class="label">Thumbnail URL:</label>
-      <input type="text" id="thumbnailUrl" name="thumbnailUrl" class="input" placeholder="Optional">
+      <input type="file" id="thumbnailUrl" name="thumbnailUrl" class="input" placeholder="Optional" (change)="uploadFile($event)">
     </div>
 
     <div class="migration-add-button singlem">
-      <button type="submit" id="submitBtn" class="btn btn-primary custom-button" (click)="submitMigration()">Edit Migration</button>
+      <button type="submit" id="submitBtn" class="btn btn-primary custom-button">Submit Migration</button>
     </div>
   </div>
-</div>
+</form>
+
+

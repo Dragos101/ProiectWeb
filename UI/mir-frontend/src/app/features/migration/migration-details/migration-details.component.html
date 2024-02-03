@@ -2,7 +2,7 @@
   <ng-container *ngIf="!isLoading; else showSpinner" >
     <div class="migration">
       <div class="rowm migration-photo">
-        <img src="/assets/images/landing-image.png" alt="migration-image" class="migration-image img-fluid">
+        <img src="{{getThumb()}}" alt="migration-image" class="migration-image img-fluid">
       </div>
 
       <div class="migration-name">
@@ -66,6 +66,9 @@
 
       <div class="rowm migration-details">
         <span>{{migration?.Description}}</span>
+      </div>
+      <div class="migration-add-button singlem" *ngIf="isAuthorized() == true">
+        <a type="submit" id="submitBtn" class="btn btn-primary custom-button" [routerLink]="['/migration', migration?.Id, 'edit']">Edit</a>
       </div>
     </div>
   </ng-container>

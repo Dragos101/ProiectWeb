@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, ObservedValueOf } from 'rxjs';
 import { MigrationModel } from '../models/migration.model';
 import { environment } from 'src/environments/environment.development';
 import { MigrationRequest } from '../models/migration-request.model';
@@ -38,6 +38,10 @@ export class MigrationService {
       reportProgress: true,
       observe: 'events'
     });
+  }
+
+  updateMigraton(id: string, migration: MigrationModel): Observable<string> {
+    return this.http.put<string>(`${environment.apiBaseUrl}/migration/${id}`, migration);
   }
 
 }
