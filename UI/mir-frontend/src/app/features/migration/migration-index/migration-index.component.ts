@@ -3,6 +3,7 @@ import * as mapboxgl from 'mapbox-gl';
 import { environment } from 'src/environments/environment.development';
 import { MigrationModel } from '../models/migration.model';
 import { MigrationService } from '../services/migration.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-migration-index',
@@ -14,7 +15,7 @@ export class MigrationIndexComponent implements OnInit {
   map?: mapboxgl.Map
   migrations: MigrationModel[]
 
-  constructor(private migrationService: MigrationService) {
+  constructor(private router: Router, private migrationService: MigrationService) {
     (mapboxgl as any).accessToken = environment.mapBoxApi
     this.migrations = []
   }
@@ -39,15 +40,31 @@ export class MigrationIndexComponent implements OnInit {
 
     this.map.on('load', () => {
       this.migrations.forEach((migration) => {
-        const popup = new mapboxgl.Popup({ offset: 25 }).setHTML(
-          `<h3>${migration.Name}</h3><p>${migration.Description}</p>`
-        );
+        const popupContent = document.createElement('div');
+        popupContent.innerHTML = `
+          <h3>${migration.Name}</h3>
+          <p>${migration.Description.slice(0, 150)}...</p>
+          <a href="/migration/${migration.Id}" class="popup-link">show more</a>
+        `;
+
+        const popup = new mapboxgl.Popup({ offset: 25 }).setDOMContent(popupContent);
 
         if (this.map) {
-          new mapboxgl.Marker()
+          const marker = new mapboxgl.Marker()
             .setLngLat([migration.Longitude, migration.Latitude])
             .setPopup(popup)
             .addTo(this.map);
+
+
+            marker.getElement().addEventListener('click', () => {
+              const popupLink = popupContent.querySelector('.popup-link');
+              if (popupLink) {
+                popupLink.addEventListener('click', (event) => {
+                  event.preventDefault();
+                  this.router.navigate(['/migration', migration.Id]);
+                });
+              }
+            });
         }
       });
     });
