@@ -23,24 +23,34 @@ export class MigrationIndexComponent implements OnInit {
     this.migrationService.getMigrations().subscribe({
       next: (response) => {
         this.migrations = response
+        console.log(this.migrations)
+        this.initializeMap();
       }
     })
+  }
 
+  initializeMap(): void {
     this.map = new mapboxgl.Map({
       container: 'map',
       style: 'mapbox://styles/mapbox/streets-v11',
-      zoom: 6,
-      center: [24.9668, 45.9432],
-    })
+      zoom: 2,
+      center: [-16.743686, 46.054594],
+    });
 
-    const popup = new mapboxgl.Popup().setHTML(
-      `<h3>Migratie 1</h3><p>Pasarile calatoare pe la cuiburi se aduna</p>`
-    );
+    this.map.on('load', () => {
+      this.migrations.forEach((migration) => {
+        const popup = new mapboxgl.Popup({ offset: 25 }).setHTML(
+          `<h3>${migration.Name}</h3><p>${migration.Description}</p>`
+        );
 
-    new mapboxgl.Marker()
-      .setLngLat([24.9668, 45.9432])
-      .setPopup(popup)
-      .addTo(this.map);
+        if (this.map) {
+          new mapboxgl.Marker()
+            .setLngLat([migration.Longitude, migration.Latitude])
+            .setPopup(popup)
+            .addTo(this.map);
+        }
+      });
+    });
   }
 }
 
