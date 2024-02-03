@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Azure.Core;
+using Microsoft.AspNetCore.Mvc;
 using mir_backend.Models.DTO;
 using mir_backend.Repositories.Interface;
 using Newtonsoft.Json;
@@ -42,7 +43,7 @@ namespace mir_backend.Controllers
             var migrations = FromXmlToJson(allMigrations);
 
             var json = JsonConvert.SerializeObject(migrations, Formatting.Indented);
-            
+
             return Ok(json);
         }
 
@@ -72,6 +73,8 @@ namespace mir_backend.Controllers
                 Id = Guid.NewGuid(),
                 Latitude = request.Latitude,
                 Longitude = request.Longitude,
+                City = request.City,
+                Country = request.Country
             };
 
             var newMigrationType = new MigrationTypeDto()
@@ -119,7 +122,7 @@ namespace mir_backend.Controllers
                 return BadRequest(ex.Message);
             }
         }
-        
+
         [HttpGet]
         [Route("/migration/{id}")]
         public async Task<IActionResult> GetById(Guid id)
@@ -134,7 +137,7 @@ namespace mir_backend.Controllers
 
             // Parse the XML result
             var migrationJSON = FromXmlToJson(migration);
-            
+
             // Convert the migration object to JSON
             var json = JsonConvert.SerializeObject(migrationJSON, Formatting.Indented);
 
@@ -144,8 +147,10 @@ namespace mir_backend.Controllers
 
         [HttpPut]
         [Route("/migration/{id}")]
-        public async Task<IActionResult> EditMigration([FromRoute]Guid id, [FromBody]MigrationRequestDto request){
-            try{
+        public async Task<IActionResult> EditMigration([FromRoute] Guid id, [FromBody] MigrationRequestDto request)
+        {
+            try
+            {
                 var result = await migrationService.updateMigration(id, request);
                 return Ok(result);
             }
@@ -163,7 +168,7 @@ namespace mir_backend.Controllers
 
             var migrations = doc.Descendants(ns + "result").Select(result => new MigrationResponseDto
             {
-                Id = Guid.TryParse(result.Elements(ns + "binding").FirstOrDefault(e => e.Attribute("name")?.Value == "id")?.Element(ns + "literal")?.Value, out Guid id) ? id: Guid.Empty,
+                Id = Guid.TryParse(result.Elements(ns + "binding").FirstOrDefault(e => e.Attribute("name")?.Value == "id")?.Element(ns + "literal")?.Value, out Guid id) ? id : Guid.Empty,
                 UserId = Guid.TryParse(result.Elements(ns + "binding").FirstOrDefault(e => e.Attribute("name")?.Value == "userId")?.Element(ns + "literal")?.Value, out Guid guid) ? guid : Guid.Empty,
                 Description = result.Elements(ns + "binding").FirstOrDefault(e => e.Attribute("name")?.Value == "migrationDescription")?.Element(ns + "literal")?.Value,
                 Name = result.Elements(ns + "binding").FirstOrDefault(e => e.Attribute("name")?.Value == "name")?.Element(ns + "literal")?.Value,
@@ -173,6 +178,8 @@ namespace mir_backend.Controllers
                 Category = result.Elements(ns + "binding").FirstOrDefault(e => e.Attribute("name")?.Value == "category")?.Element(ns + "literal")?.Value,
                 ThumbnailUrl = result.Elements(ns + "binding").FirstOrDefault(e => e.Attribute("name")?.Value == "thumbnailUrl")?.Element(ns + "literal")?.Value,
                 Season = result.Elements(ns + "binding").FirstOrDefault(e => e.Attribute("name")?.Value == "season")?.Element(ns + "literal")?.Value,
+                Country = result.Elements(ns + "binding").FirstOrDefault(e => e.Attribute("name")?.Value == "country")?.Element(ns + "literal")?.Value,
+                City = result.Elements(ns + "binding").FirstOrDefault(e => e.Attribute("name")?.Value == "city")?.Element(ns + "literal")?.Value,
                 Longitude = float.TryParse(result.Elements(ns + "binding").FirstOrDefault(e => e.Attribute("name")?.Value == "longitude")?.Element(ns + "literal")?.Value, out float lon) ? lon : 0,
                 Latitude = float.TryParse(result.Elements(ns + "binding").FirstOrDefault(e => e.Attribute("name")?.Value == "latitude")?.Element(ns + "literal")?.Value, out float lat) ? lat : 0
             }).ToList();
