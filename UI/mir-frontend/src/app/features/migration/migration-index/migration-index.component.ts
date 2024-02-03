@@ -58,7 +58,7 @@ export class MigrationIndexComponent implements OnInit {
       this.filteredMigrations = this.migrations.filter((migration) => migration.Season === this.seasonFilter && migration.Category === this.categoryFilter)
     }
 
-    this.initializeMap()
+    this.updateMapData()
   }
 
   ngOnInit(): void {
@@ -83,74 +83,111 @@ export class MigrationIndexComponent implements OnInit {
     }
 
     this.map.on('load', () => {
-      if (this.map && this.map.getSource('migrations')) {
-        this.map.removeLayer('migrations');
-        this.map.removeSource('migrations');
-      }
-
-      const migrationsGeoJSON: FeatureCollection<Geometry> = {
-        type: 'FeatureCollection',
-        features: this.filteredMigrations.map(migration => ({
-          type: 'Feature',
-          properties: {
-            id: migration.Id,
-            name: migration.Name,
-            description: migration.Description,
-            // Additional properties can go here
-          },
-          geometry: {
-            type: 'Point',
-            coordinates: [migration.Longitude, migration.Latitude]
-          }
-        }))
-      };
-
-      this.map!.addSource('migrations', {
-        type: 'geojson',
-        data: migrationsGeoJSON
-      });
-
-      this.map!.addLayer({
-        id: 'migrations',
-        type: 'circle', // or 'symbol' if you want to use custom icons
-        source: 'migrations',
-        layout: {},
-        paint: {
-          // Customize the appearance of the layer here
-          'circle-radius': 8,
-          'circle-color': '#ff5200' // Example styling
-        }
-      });
-
-      this.filteredMigrations.forEach((migration) => {
-        const popupContent = document.createElement('div');
-        popupContent.innerHTML = `
-          <h3>${migration.Name}</h3>
-          <p>${migration.Description.slice(0, 150)}...</p>
-          <a href="/migration/${migration.Id}" class="popup-link">show more</a>
-        `;
-
-        const popup = new mapboxgl.Popup({ offset: 25 }).setDOMContent(popupContent);
-
-        if (this.map) {
-          const marker = new mapboxgl.Marker()
-            .setLngLat([migration.Longitude, migration.Latitude])
-            .setPopup(popup)
-            .addTo(this.map);
-
-
-            marker.getElement().addEventListener('click', () => {
-              const popupLink = popupContent.querySelector('.popup-link');
-              if (popupLink) {
-                popupLink.addEventListener('click', (event) => {
-                  event.preventDefault();
-                  this.router.navigate(['/migration', migration.Id]);
-                });
-              }
-            });
-        }
-      });
+      this.updateMapData(); // Initial map data update
     });
   }
-}
 
+  updateMapData(): void {
+    if (this.map!.getSource('migrations')) {
+      this.map!.removeLayer('migrations');
+      this.map!.removeSource('migrations');
+    }
+
+    console.log(this.filteredMigrations)
+
+    const migrationsGeoJSON: FeatureCollection<Geometry> = {
+      type: 'FeatureCollection',
+      features: this.filteredMigrations.map(migration => ({
+        type: 'Feature',
+        properties: {
+          id: migration.Id,
+          name: migration.Name,
+          description: migration.Description,
+          long: migration.Longitude,
+          lat: migration.Latitude
+        },
+        geometry: {
+          type: 'Point',
+          coordinates: [migration.Longitude, migration.Latitude]
+        }
+      }))
+    };
+
+    this.map!.addSource('migrations', {
+      type: 'geojson',
+      data: migrationsGeoJSON
+    });
+
+    this.map!.addLayer({
+      id: 'migrations',
+      type: 'circle',
+      source: 'migrations',
+      paint: {
+        'circle-radius': 8,
+        'circle-color': '#ff5200'
+      }
+    });
+
+    this.map!.on('click', 'migrations', (e) => {
+      // Ensure that if the map is clicked on a feature, it will be processed
+      if (e.features!.length > 0) {
+        const feature = e.features![0];
+        this.showPopup(feature);
+      }
+    });
+
+    // Change the cursor to a pointer when hovering over points
+    this.map!.on('mouseenter', 'migrations', () => {
+      this.map!.getCanvas().style.cursor = 'pointer';
+    });
+
+    this.map!.on('mouseleave', 'migrations', () => {
+      this.map!.getCanvas().style.cursor = '';
+    });
+  }
+
+  showPopup(feature: mapboxgl.MapboxGeoJSONFeature): void {
+    const { name, description, id, long, lat } = feature.properties!;
+
+    // Ensure that if the map is clicked on a feature, it will fly to that point
+    this.map!.flyTo({
+      center: [long, lat]
+    });
+
+    const popupContent = `
+      <div>
+        <h3>${name}</h3>
+        <p>${description.slice(0, 150)}...</p>
+        <a href="/migration/${id}" id="showMoreBtn-${id}">Show More</a> <!-- Adjusted ID -->
+      </div>
+    `;
+
+    // Create a popup and set its content
+    const popup = new mapboxgl.Popup()
+      .setLngLat([long, lat])
+      .setHTML(popupContent)
+      .addTo(this.map!)
+      .on('open', () => { // Event listener for when the popup opens
+        const showMoreBtn = document.querySelector(`#showMoreBtn-${id}`); // Use unique ID
+        if (showMoreBtn) {
+          showMoreBtn.addEventListener('click', (event) => {
+            this.router.navigateByUrl(`/migration/${id}`);
+            event.preventDefault();
+          });
+        }
+      });
+
+
+    // Find the newly added button in the popup and add click listener
+    const popupElement = document.getElementById('showMoreBtn');
+    if (popupElement) {
+      popupElement.onclick = () => {
+        this.router.navigateByUrl(`/migration/${id}`);
+      };
+    }
+  }
+
+  toMigration(event: Event, id: string) {
+    this.router.navigateByUrl(`/migration/${id}`)
+  }
+}
