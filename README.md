@@ -54,6 +54,8 @@ Web system capable to generate in real-time <a href="https://wiki.openstreetmap.
   - [Diagrams](https://github.com/Dragos101/ProiectWeb/tree/main/Documentation/Diagrams) - Lupu Cezar (Context and Components Diagrams) (50%) + Baciu Dragos (Use Case Diagrams)(50%)
   - [Scholarly HTML code](https://github.com/Dragos101/ProiectWeb/blob/main/Documentation/Scholarly/index.html) - Lupu Cezar (75%) + Baciu Dragos(25%)
   - [README as public wiki](https://github.com/Dragos101/ProiectWeb/blob/main/README.md) - Lupu Cezar
+  - [Develop frontend](https://github.com/Dragos101/ProiectWeb/tree/main/UI/mir-frontend) - Baciu Dragos (index page + migration details + migration index) and Lupu Cezar (add migration + edit migration page) - using Angular
+  - [Develop backend](https://github.com/Dragos101/ProiectWeb/tree/main/BackEnd/mir-backend/mir-backend) - Baciu Dragos and Lupu Cezar (we worked together at the components of backend - AuthSystem, MigrationDbContext - using Stardog, SPARQL queries (from MigrationrRepository.cs), deployment) - using dotnet;
 
 ## :handshake: Team
 
@@ -81,6 +83,9 @@ Project Link: https://github.com/Dragos101/ProiectWeb
  - [Draw.io](https://www.drawio.com/)
  - [Scholarly HTML Template](https://w3c.github.io/scholarly-html/)
  - [Schema.org](https://schema.org/)
+ - [Swagger API documation](https://swagger.io/solutions/api-documentation/)
+ - [Deployment using Azure](https://azure.microsoft.com/)
+ - [Stardog](https://www.stardog.com/)
 
 ## Required tagging
 
