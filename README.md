@@ -55,6 +55,7 @@ Web system capable to generate in real-time <a href="https://wiki.openstreetmap.
   - [Scholarly HTML code](https://github.com/Dragos101/ProiectWeb/blob/main/Documentation/Scholarly/index.html) - Lupu Cezar (75%) + Baciu Dragos(25%)
   - [README as public wiki](https://github.com/Dragos101/ProiectWeb/blob/main/README.md) - Lupu Cezar
   - [Develop frontend](https://github.com/Dragos101/ProiectWeb/tree/main/UI/mir-frontend) - Baciu Dragos (index page + migration details + migration index) and Lupu Cezar (add migration + edit migration page) - using Angular
+  - [Dataset](https://simplemaps.com/data/world-cities) - Lupu Cezar (finding dataset and extract the desired info for our project - 43 000 entries of cities from all the world)
   - [Develop backend](https://github.com/Dragos101/ProiectWeb/tree/main/BackEnd/mir-backend/mir-backend) - Baciu Dragos and Lupu Cezar (we worked together at the components of backend - AuthSystem, MigrationDbContext - using Stardog, SPARQL queries (from MigrationrRepository.cs)) - using dotnet;
   - [Deployment](https://migrationreportingtool.web.app/) - Baciu Dragos, using Microsoft Azure tools;
 
@@ -87,6 +88,7 @@ Project Link: https://github.com/Dragos101/ProiectWeb
  - [Swagger API documation](https://swagger.io/solutions/api-documentation/)
  - [Deployment using Azure](https://azure.microsoft.com/)
  - [Stardog](https://www.stardog.com/)
+ - [AWS S3](https://aws.amazon.com/s3/)
 
 ## Required tagging
 
