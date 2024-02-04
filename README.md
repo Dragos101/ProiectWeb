@@ -2,7 +2,7 @@
   <h1>Web Application Development - Migrations Reporting Tool</h1> 
   
   <p>
-    This is the public wiki associated to the WADe project repository that record the solution's progress. 
+    This is the public wiki associated to the WADe project repository that record the solution's progress. Our site is hosted and can be found <a href="https://migrationreportingtool.web.app/">here.</a>
   </p>
   
   
@@ -55,7 +55,8 @@ Web system capable to generate in real-time <a href="https://wiki.openstreetmap.
   - [Scholarly HTML code](https://github.com/Dragos101/ProiectWeb/blob/main/Documentation/Scholarly/index.html) - Lupu Cezar (75%) + Baciu Dragos(25%)
   - [README as public wiki](https://github.com/Dragos101/ProiectWeb/blob/main/README.md) - Lupu Cezar
   - [Develop frontend](https://github.com/Dragos101/ProiectWeb/tree/main/UI/mir-frontend) - Baciu Dragos (index page + migration details + migration index) and Lupu Cezar (add migration + edit migration page) - using Angular
-  - [Develop backend](https://github.com/Dragos101/ProiectWeb/tree/main/BackEnd/mir-backend/mir-backend) - Baciu Dragos and Lupu Cezar (we worked together at the components of backend - AuthSystem, MigrationDbContext - using Stardog, SPARQL queries (from MigrationrRepository.cs), deployment) - using dotnet;
+  - [Develop backend](https://github.com/Dragos101/ProiectWeb/tree/main/BackEnd/mir-backend/mir-backend) - Baciu Dragos and Lupu Cezar (we worked together at the components of backend - AuthSystem, MigrationDbContext - using Stardog, SPARQL queries (from MigrationrRepository.cs)) - using dotnet;
+  - [Deployment](https://migrationreportingtool.web.app/) - Baciu Dragos, using Microsoft Azure tools;
 
 ## :handshake: Team
 
