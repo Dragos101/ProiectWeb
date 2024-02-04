@@ -31,6 +31,14 @@ export class NavbarComponent implements OnInit {
     console.log(this.userId)
   }
 
+  hideMigrationButton(): boolean {
+    return this.router.url !== '/migrations'
+  }
+
+  hideStatisticsButton(): boolean {
+    return this.router.url !== '/statistics'
+  }
+
   hideIfLanding(): boolean {
     return this.router.url !== ''
   }
