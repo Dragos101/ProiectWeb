@@ -179,6 +179,16 @@
             <img src="swagger-models/migrationLocation.png" alt="Migration-Location-Model" style="width: 100%">
           </ol>
         </ul>
+
+        Update: Models have suffered some modification as follows in the following pictures:
+        <ul>
+          <ol type="1">
+            <li>MigrationContext</li>
+            <img src="swagger-models/migrationContext-update.png" alt="Migration-Context-Update" style="width: 100%;">
+            <li>MigrationLocation</li>
+            <img src="swagger-models/MigrationLocation-update.png" alt="Migration-Location-Update" style="width: 100%;">
+          </ol>
+        </ul>
       </p>
     </section>
     <section id="external-data">
@@ -190,6 +200,12 @@
         <li>Migration Data API - that will help us in managing the functionalities</li>
         <li>Geolocation Services - that will help us in showing the migrations on a map</li>
         The interactive map will be implemented using <a href="https://docs.mapbox.com/">Mapbox</a> since it fits all criterias we are looking for.
+        <li>Stardog API</li>
+        This API is instrumental in managing core functionalities within MIR, such as updating, retrieving, and analyzing migration data. It serves as a crucial backbone for our data management strategy, ensuring that our repository remains up-to-date and accurate. Stardog has all the tools necessarry to upload a rdf schema, more than that, we could just create an endpoint to which our application could connect and make the necessarry API calls such: creating a migration, gathering all the migrations for a specific user and so on. All of these are possible thanks to a SPARQL endpoint implementation.
+        <li>AWS s3 API</li>
+        This API allows a user to upload a photo to the S3 bucket. The project doens't implement a secure way to communicate with the bucket, since the implementation shows the access key and the secret key. But, other than that, thanks to this we can make use of photos.
+        <li>Location Data</li>
+        Thanks to some databases we could figure out a way to download a file which contains all the countries with their cities, along with that we have longitute and latitute for every city on the Earth. We make use of this information when we create or update a migration, but not only that, also when we compute migrations for the interactive map. 
       </ul>
     </section>
     <section id="linked-data">
@@ -201,6 +217,49 @@
         <li>Usage of Uniform Resource Identifiers (URIs) for data identification</li>
         <li>Linking data elements through RDF (Resource Description Framework)</li>
       </ul>
+      <p>We have proposed the following models for using RDFs:</p>
+      <ul>
+        <ol type="1">
+          <li>Ontology IRI</li>
+          We we're looking for something meaningful, clear and sugestive, and we've choosen: http://www.semanticweb.org/web-proj/MIR as for our IRI
+          <li>Class</li>
+          We have the following classes:
+          <ul>
+            <ol type="1">
+              <li>Migration</li>
+              <li>MigrationType</li>
+              <li>MigrationLocation</li>
+              <li>MigrationContext</li>
+            </ol>
+          </ul>
+          These classes model the way we store the RDF.
+          <li>Object Properties - Relationships</li>
+          <ul>
+            <ol type="1">
+              <li>hasType</li>
+              Is the property of a migration that ensures a Migration must have a MigrationType.
+              <li>hasLocation</li>
+              Is the property of a migration that ensures a Migration must have a MigrationLocation.
+              <li>hasContext</li>
+              Is the property of a migration that ensures a Migration must have a MigrationContext.
+            </ol>
+          </ul>
+          <li>Attributes</li>
+          <ul>
+            <ol type="1">
+              <li>Migration attributes</li>
+              Migration class has the following attributes: id, userId, migrationLocationId, migrationContextId, migrationTypeId; where id is a unique identifier, userId is the link between the user that created the migration and migration, migrationLocationId is the link between the migrationLocation and migration, migrationContextId is the link between the migrationContext and migration and migrationTypeId is the link between migrationLocation and migration.
+              <li>MigrationLocation attributes</li>
+              MigrationLocation has the following attributes: id, country, city, longitude, latitude; where id is the unique identifier, country states the country of the migration, city states the city of the migration, longitude and latitude being the fields populated when both country and city have been selected.
+              <li>MigrationType attributes</li>
+              MigrationType has the following attributes: id, category; where id is the unique identifier and the category is useful for labeling a migration.
+              <li>MigrationContext attributes</li>
+              MigrationContext attributes has the following attributes: id, working, thumbnailUrl, season, politicFactors, name, description, calamity. All of them are attributes that put label on our migration.
+            </ol>
+          </ul>
+        </ol>
+      </ul>
+
     </section>
     <section id="in-depth-functionalities">
       <h3>4.4 Functionalities in depth</h3>
@@ -260,6 +319,7 @@
     <section typeof="schema:Article" property="schema:articleSection" id="openapi" role="doc-openapi">
       <h3><span>5.1 </span>OpenAPI Specification</h3>
       <p>The OpenAPI specification outlines the REST API design for handling communication within the web application. The specification can be found <a href="https://app.swaggerhub.com/apis/DragosBaciu/MIR-Template/1.0.0">here</a>. </p>
+      <img src="swagger-models/open-api-spec.png" alt="Open API Specification" style="width: 100%">
     </section>
   
     <section typeof="schema:Article" property="schema:articleSection" id="diagrams" role="doc-diagrams">
