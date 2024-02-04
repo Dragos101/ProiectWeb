@@ -112,14 +112,17 @@
   <section typeof="schema:Article" property="schema:Abstract" id="abstract" role="doc-abstract">
     <h2><span>1. </span>Abstract</h2>
     <p>
-      Migration Reporting Tool is a web-based utility. Designed as a solution for visualizing, editing, and reporting migration data processes, the tool integrates user observations and data from various sensors to generate, in real-time, an interactive map depicting migrations conducted by different entities.
+      Migration Reporting Tool is a web-based utility. Designed as a solution for visualizing, editing, and reporting migration data processes, the tool integrates user observations and data from various sensors to generate, in real-time, an interactive map depicting migrations conducted by different entities. 
     </p>
   </section>
 
   <section typeof="schema:Article" property="schema: articleSection" id="introduction" role="doc-introduction">
     <h2><span>2. </span>Introduction</h2>
     <p>
-        Migration Reporting Tool (MIR) is a project proposed at <span typeof="schema:Course" property="schema:url" resource="https://profs.info.uaic.ro/~busaco/teach/courses/wade/"><a role="doc-biblioref" href="https://profs.info.uaic.ro/~busaco/teach/courses/wade/"><span property="schema:name">Web Application Development course</span></a></span>. In order to resolve this task, the REST paradigm will be used. The communication between the server and the clients will be resolved by creating an REST API that will handle the desired comunnication in our web application.The migrations will be shown on an interactive map and they will be handled in different ways by the users, regarding the role of the client.
+        Migration Reporting Tool (MIR) is a project proposed at <span typeof="schema:Course" property="schema:url" resource="https://profs.info.uaic.ro/~busaco/teach/courses/wade/"><a role="doc-biblioref" href="https://profs.info.uaic.ro/~busaco/teach/courses/wade/"><span property="schema:name">Web Application Development course</span></a></span>. In order to resolve this task, the REST paradigm will be used. The communication between the server and the clients will be resolved by creating an REST API that will handle the desired comunnication in our web application.The migrations will be shown on an interactive map and they will be handled in different ways by the users, regarding the role of the client. 
+    </p>
+    <p>
+      <strong>UPDATE:</strong> The site can be tested <a href = "https://migrationreportingtool.web.app/">here</a> and a demo can be visualised <a href = "https://www.youtube.com/watch?v=xA7DYzfgNrM&ab_channel=DragosBaciu">here.</a>
     </p>
 
   </section>
@@ -344,9 +347,29 @@
    
   <section typeof="schema:Article" property="schema:articleSection" id="conclusion" role="doc-conclusion">
     <h2><span>6. </span>Conclusion</h2>
-    This section will be updated before the final presentation for this project.
-    
+    <p>
+      In conclusion, the Migration Reporting Tool (MIR) represents a comprehensive solution for visualizing, managing, and reporting migration data processes. Throughout the development of this web-based utility, we have carefully considered various aspects, ranging from internal data structures to external data sources and adhering to linked data principles.
+    </p>
+    <p>
+      The functionalities of MIR cover a broad spectrum, including user authentication, CRUD operations on migrations, and interaction with an intelligent map. We have designed internal data models, employed external data sources, and ensured adherence to linked data principles for improved data interoperability and accessibility.
+    </p>
+    <p>
+      The incorporation of ontologies within the Migration Reporting Tool (MIR) marks a pivotal aspect of our project, contributing significantly to the overall structure, understanding, and interoperability of migration data. Through careful consideration and application of linked data principles, our ontologies provide a standardized and semantically rich framework for representing various entities and relationships within the system.
+    </p>
+    <p>
+      <strong>Structured Data:</strong> The ontologies, identified by the chosen Ontology IRI (http://www.semanticweb.org/web-proj/MIR), ensure structured and organized data representation. Classes such as Migration, MigrationType, MigrationLocation, and MigrationContext delineate the distinct components of migration data, enhancing clarity and maintainability.
+    </p>
+    <p>
+      <strong>Interconnected Relationships:</strong> Object properties like <code>hasType</code>, <code>hasLocation</code>, and <code>hasContext</code> establish interconnected relationships, reflecting the dependencies and associations between different elements. This not only aids in comprehensive data modeling but also fosters better understanding of migration processes.
+    </p>
+    <p>
+      <strong>Attributes and Semantic Enrichment:</strong> The attributes associated with each class provide a granular level of detail, enriching the semantics of the data. This semantic richness not only enhances the user experience but also facilitates seamless integration with external data sources, contributing to a more holistic view of migration phenomena.
+    </p>
+    <p>
+      The collaboration process has been facilitated through GitHub, where we collaboratively created diagrams, developed the OpenAPI specification, implemented Scholarly HTML, and tracked project progress. The deployment of the application using Microsoft Azure, for backend, and Firebase, for frontend, adds a practical dimension to our efforts.
+    </p>
   </section>
+  
 
   <section typeof = "schema:Article" property="schema:articleSection" id="references" role="doc-references">
     <h2><span>7. </span>References</h2>
@@ -400,7 +423,6 @@
           <a href="https://azure.microsoft.com">Deployment using Azure</a>
         </cite>
       </li>
-
       <li typeof="schema:WebPage" role="doc-biblioentry"
           resource="https://www.stardog.com"
           property="schema:citation" id="stardog">
@@ -408,7 +430,6 @@
           <a href="https://www.stardog.com">Stardog</a>
         </cite>
       </li>
-
       <li typeof="schema:WebPage" role="doc-biblioentry"
           resource="https://aws.amazon.com/s3"
           property="schema:citation" id="aws-s3">

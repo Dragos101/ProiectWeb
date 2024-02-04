@@ -47,6 +47,7 @@
 
 Considering observations provided by users (<em>e.g.</em>, messages posted on a social network) or various sensors, develop an "intelligent"
 Web system capable to generate in real-time <a href="https://wiki.openstreetmap.org/wiki/Develop" title="Details">an interactive map</a> regarding the migrations performed by various entities (birds, humans, robots, extraterrestrial beings) in a specific context (season, working, politic factors, calamity). A migration-related event could be directly reported – in conjunction to the GPS info + optional (meta)data – into the implemented platform or by using <code>#mig-here</code> hashtag on an existing social Web application (Instagram, Twitter, Vimeo). Several useful statistics and visualizations about the migratory habits of specific species – including information on <a href="http://www.geonames.org/ontology/documentation.html" title="Details about GeoNames">geographical areas</a>, <a href="https://github.com/caesar0301/awesome-public-datasets#climate-weather" title="Climate/Weather data sources">climate</a>, seasons, user comments/images/videos, etc. – should be offered by a SPARQL endpoint – possibly enhanced by additional knowledge provided by DBpedia and/or Wikidata. Visit also <a href="https://www.migrationdataportal.org/" title="Migration Data Portal">Migration Data Portal</a>. Bonus: adopting a <a href="https://manuzhang.github.io/awesome-streaming/" title="Resources of interest">stream processing</a> approach.</p>
+<p><strong>UPDATE:</strong> The site can be tested <a href = "https://migrationreportingtool.web.app/">here</a> and a demo can be visualised <a href = "https://www.youtube.com/watch?v=xA7DYzfgNrM&ab_channel=DragosBaciu">here.</a></p>
 
 ## :card_index_dividers: Project Progress
 
@@ -57,7 +58,7 @@ Web system capable to generate in real-time <a href="https://wiki.openstreetmap.
   - [Develop frontend](https://github.com/Dragos101/ProiectWeb/tree/main/UI/mir-frontend) - Baciu Dragos (index page + migration details + migration index) and Lupu Cezar (add migration + edit migration page) - using Angular
   - [Dataset](https://simplemaps.com/data/world-cities) - Lupu Cezar (finding dataset and extract the desired info for our project - 43 000 entries of cities from all the world)
   - [Develop backend](https://github.com/Dragos101/ProiectWeb/tree/main/BackEnd/mir-backend/mir-backend) - Baciu Dragos and Lupu Cezar (we worked together at the components of backend - AuthSystem, MigrationDbContext - using Stardog, SPARQL queries (from MigrationrRepository.cs)) - using dotnet;
-  - [Deployment](https://migrationreportingtool.web.app/) - Baciu Dragos, using Microsoft Azure tools;
+  - [Deployment](https://migrationreportingtool.web.app/) - Baciu Dragos, using Microsoft Azure tools for backend and Firebase for frontend;
 
 ## :handshake: Team
 
