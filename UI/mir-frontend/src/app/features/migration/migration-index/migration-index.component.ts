@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import * as mapboxgl from 'mapbox-gl';
-import { environment } from 'src/environments/environment.development';
+import { environment } from 'src/environments/environment';
+import { MigrationService } from '../services/migration.service';
+import { Router } from '@angular/router';
+import { FeatureCollection, Geometry } from 'geojson';
 
 @Component({
   selector: 'app-migration-index',
