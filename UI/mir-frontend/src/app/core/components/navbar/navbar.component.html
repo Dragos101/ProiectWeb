@@ -24,11 +24,8 @@
 
   </div>
   <ng-container *ngIf="user !== undefined && hideIfLanding()">
-    <div class="column add-mig" *ngIf="hideMigrationButton()">
+    <div class="column add-mig">
       <button class="btn btn-primary custom-button" [routerLink]="['/migrations']">View Migrations</button>
-    </div>
-    <div class="column add-mig" *ngIf="hideStatisticsButton()">
-      <button class="btn btn-primary custom-button" [routerLink]="['/statistics']">Statistics</button>
     </div>
   </ng-container>
 </nav>

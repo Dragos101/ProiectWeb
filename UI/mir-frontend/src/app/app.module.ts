@@ -13,9 +13,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { MigrationDetailsComponent } from './features/migration/migration-details/migration-details.component';
 import { ViewMigrationsComponent } from './features/migration/view-migrations/view-migrations.component';
 import { NgxMapboxGLModule } from 'ngx-mapbox-gl';
+import { environment } from 'src/environments/environment.development';
 import { EditMigrationComponent } from './features/migration/edit-migration/edit-migration.component';
-import { ViewStatisticsComponent } from './features/statistics/view-statistics/view-statistics.component';
-import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 
 @NgModule({
@@ -27,8 +26,7 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
     NavbarComponent,
     MigrationDetailsComponent,
     ViewMigrationsComponent,
-    EditMigrationComponent,
-    ViewStatisticsComponent
+    EditMigrationComponent
   ],
   imports: [
     BrowserModule,
@@ -36,8 +34,7 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
     NgbModule,
     FormsModule,
     HttpClientModule,
-    NgxMapboxGLModule,
-    NgxChartsModule,
+    NgxMapboxGLModule
   ],
   providers: [],
   bootstrap: [AppComponent]
