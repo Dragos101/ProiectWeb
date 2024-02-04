@@ -17,7 +17,7 @@ namespace mir_backend.Repositories.Implementation
         {
             var sparqlQuery = @"
             PREFIX ex: <http://www.semanticweb.org/web-proj/MIR#>
-            SELECT ?id ?userId ?migration ?name ?working ?thumbnailUrl ?politicFactors ?migrationDescription ?calamity ?longitude ?latitude ?season ?category
+            SELECT ?id ?userId ?migration ?name ?working ?thumbnailUrl ?politicFactors ?migrationDescription ?calamity ?city ?country ?longitude ?latitude ?season ?category
             WHERE {
               ?migration a ex:Migration ;
                 ex:id ?id ;
@@ -36,6 +36,8 @@ namespace mir_backend.Repositories.Implementation
   
               OPTIONAL {
                 ?migration ex:hasLocation ?location .
+                OPTIONAL { ?location ex:country ?country . } 
+                OPTIONAL { ?location ex:city ?city . } 
                 OPTIONAL { ?location ex:longitude ?longitude . } 
                 OPTIONAL { ?location ex:latitude ?latitude . }
               }
@@ -54,7 +56,7 @@ namespace mir_backend.Repositories.Implementation
             var sparqlQuery = $@"
             PREFIX ex: <http://www.semanticweb.org/web-proj/MIR#>
 
-            SELECT ?id ?userId ?migration ?working ?thumbnailUrl ?politicFactors ?migrationDescription ?calamity ?longitude ?latitude ?season ?category
+            SELECT ?id ?userId ?migration ?name ?working ?thumbnailUrl ?politicFactors ?migrationDescription ?calamity ?city ?country ?longitude ?latitude ?season ?category
             WHERE {{
               ?migration a ex:Migration ;
                 ex:id ?id ;
@@ -65,6 +67,7 @@ namespace mir_backend.Repositories.Implementation
               OPTIONAL {{
                 ?migration ex:hasContext ?context .
                 OPTIONAL {{ ?context ex:season ?season . }}
+                OPTIONAL {{ ?context ex:name ?name . }}
                 OPTIONAL {{ ?context ex:working ?working . }}
                 OPTIONAL {{ ?context ex:thumbnailUrl ?thumbnailUrl . }}
                 OPTIONAL {{ ?context ex:politicFactors ?politicFactors . }}
@@ -76,6 +79,8 @@ namespace mir_backend.Repositories.Implementation
                 ?migration ex:hasLocation ?location .
                 OPTIONAL {{ ?location ex:longitude ?longitude . }} 
                 OPTIONAL {{ ?location ex:latitude ?latitude . }}
+                OPTIONAL {{ ?location ex:country ?country . }} 
+                OPTIONAL {{ ?location ex:city ?city . }} 
               }}
   
               OPTIONAL {{
@@ -157,6 +162,8 @@ namespace mir_backend.Repositories.Implementation
 
                 ex:{migrationLocationInstance} a ex:MigrationLocation ;
                     ex:id ""{ml.Id}"" ;
+                    ex:country ""{ml.Country}"" ;
+                    ex:city ""{ml.City}"" ;
                     ex:longitude ""{ml.Longitude}"" ;
                     ex:latitude ""{ml.Latitude}"" . 
                 ex:{migrationInstance} ex:hasLocation ex:{migrationLocationInstance} .
@@ -176,7 +183,7 @@ namespace mir_backend.Repositories.Implementation
             var sparqlQuery = $@"
             PREFIX ex: <http://www.semanticweb.org/web-proj/MIR#>
 
-            SELECT ?id ?userId ?migration ?name ?working ?thumbnailUrl ?politicFactors ?migrationDescription ?calamity ?longitude ?latitude ?season ?category
+            SELECT ?id ?userId ?migration ?name ?working ?thumbnailUrl ?politicFactors ?migrationDescription ?calamity ?country ?city ?longitude ?latitude ?season ?category
             WHERE {{
             ?migration a ex:Migration ;
                 ex:id ?id ;
@@ -199,6 +206,8 @@ namespace mir_backend.Repositories.Implementation
                 ?migration ex:hasLocation ?location .
                 OPTIONAL {{ ?location ex:longitude ?longitude . }} 
                 OPTIONAL {{ ?location ex:latitude ?latitude . }}
+                OPTIONAL {{ ?location ex:country ?country . }} 
+                OPTIONAL {{ ?location ex:city ?city . }} 
             }}
             
             OPTIONAL {{
@@ -212,8 +221,6 @@ namespace mir_backend.Repositories.Implementation
 
         public async Task<string> updateMigration(Guid id, MigrationRequestDto request)
         {
-          // Assuming MigrationUpdateRequest contains properties like Name, Category, etc.
-          // Prepare dynamic instance names
           Guid newIdLocation = Guid.NewGuid();
           Guid newIdContext = Guid.NewGuid();
           Guid newIdType = Guid.NewGuid();
@@ -253,6 +260,8 @@ namespace mir_backend.Repositories.Implementation
 
               ex:{migrationLocationInstance} a ex:MigrationLocation;
                   ex:id ""{newIdLocation}"";
+                  ex:country ""{request.Country}"" ;
+                  ex:city ""{request.City}"" ;
                   ex:longitude ""{request.Longitude}"";
                   ex:latitude ""{request.Latitude}"". 
               ex:{migrationInstance} ex:hasLocation ex:{migrationLocationInstance}.

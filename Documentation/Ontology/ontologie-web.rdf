@@ -61,6 +61,24 @@
     
 
 
+    <!-- http://www.semanticweb.org/web-proj/MIR#City -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/web-proj/MIR#City">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/web-proj/MIR#MigrationLocation"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/web-proj/MIR#Country -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/web-proj/MIR#Country">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/web-proj/MIR#MigrationLocation"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
     <!-- http://www.semanticweb.org/web-proj/MIR#category -->
 
     <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/web-proj/MIR#category">

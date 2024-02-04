@@ -1,3 +1,6 @@
+using Amazon;
+using Amazon.Extensions.NETCore.Setup;
+using Amazon.S3;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -9,11 +12,17 @@ using mir_backend.Repositories.Interface;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
+   
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+// Directly create an instance of AmazonS3Client with hardcoded credentials
+var amazonS3Client = new AmazonS3Client("AKIA6ODU2J4QJC4CMY3C", "DpHLmwko+0NuhA3FmOgu3eJ4I8oONZlwg/WU0F54", Amazon.RegionEndpoint.EUWest1);
+
+// Manually add the AmazonS3Client instance to the services
+builder.Services.AddSingleton<IAmazonS3>(amazonS3Client);
 
 builder.Services.AddDbContext<AuthDbContext>(options =>
 {
@@ -54,8 +63,6 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 
 builder.Services.AddHttpClient();
 builder.Services.AddHttpClient<MigrationDbContext>();
-
-
 
 var app = builder.Build();
 

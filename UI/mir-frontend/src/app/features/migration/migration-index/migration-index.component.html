@@ -1,39 +1,36 @@
 <div class="migration-index">
+  <div class="migration-title">
+    <h1>Migration Reporting Tool</h1>
+  </div>
   <div class="filters-bar">
-    <div class="bar">
-      <label for="timeFilter" class="filter">Time:</label>
-      <select id="timeFilter" name="timeFilter" class="selectbox">
-        <option value="today">Today</option>
-        <option value="thisWeek">This Week</option>
-        <option value="thisMonth">This Month</option>
-        <option value="thisYear">This Year</option>
-      </select>
+    <div class="filters">
+      <div class="filter-title">
+        <h3>Filters</h3>
+        <a href="#" (click)="toggleShowFilters($event)" class="show-link">show filters</a>
+      </div>
 
-      <label for="entityFilter" class="filter">Entity:</label>
-      <select id="entityFilter" name="entityFilter" class="selectbox">
-        <option value="humans">Humans</option>
-        <option value="birds">Birds</option>
-        <option value="animals">Animals</option>
-      </select>
+      <div class="filter-category" *ngIf="showFilters == true">
+        <div class="filter">
+          <label for="entityFilter" class="filter"><h5>Entity:</h5></label>
+          <select id="entityFilter" name="entityFilter" class="selectbox" (change)="onEntityFilterChange($event)">
+            <option value="All"></option>
+            <option value="Humans">Humans</option>
+            <option value="Birds">Birds</option>
+            <option value="Animals">Animals</option>
+          </select>
+        </div>
 
-      <label for="seasonFilter" class="filter">Season:</label>
-      <select id="seasonFilter" name="seasonFilter" class="selectbox">
-        <option value="summer">Summer</option>
-        <option value="autumn">Autumn</option>
-        <option value="winter">Winter</option>
-        <option value="spring">Spring</option>
-      </select>
-
-      <label for="migrationIdFilter" class="filter">MigrationID:</label>
-      <input type="text" id="migrationIdFilter" class="selectbox" name="migrationIdFilter" pattern="\d+" title="Please enter only numbers">
-
-      <label for="latitudeInput" class="filter">Latitude:</label>
-      <input type="text" id="latitudeInput" class="selectbox" name="latitudeInput" placeholder="Enter latitude">
-
-      <label for="longitudeInput" class="filter">Longitude:</label>
-      <input type="text" id="longitudeInput" class="selectbox" name="longitudeInput" placeholder="Enter longitude">
-
-      <button type="button" id="submitCoordinates" class="filter">Submit</button>
+        <div class="filter">
+          <label for="seasonFilter" class="filter"><h5>Season:</h5></label>
+          <select id="seasonFilter" name="seasonFilter" class="selectbox" (change)="onSeasonFilterChange($event)">
+            <option value="All"></option>
+            <option value="Summer">Summer</option>
+            <option value="Autumn">Autumn</option>
+            <option value="Winter">Winter</option>
+            <option value="Spring">Spring</option>
+          </select>
+        </div>
+      </div>
     </div>
   </div>
 
